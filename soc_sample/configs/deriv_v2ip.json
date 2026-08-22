@@ -1,0 +1,11 @@
+{
+  "project": "deriv_v2ip",
+  "derived_from": "base_project",
+  "ip_version": "apb_gpio_v2",
+  "rtl_file": "rtl/apb_gpio_v2.v",
+  "params": {
+    "NUM_GPIO": 8,
+    "ENABLE_IRQ": 1
+  },
+  "note": "Uses apb_gpio v2 (adds illegal-address trap on pslverr) instead of v1. Any exclusion learned against v1 RTL must NOT be reused here without re-checking the v2 source."
+}

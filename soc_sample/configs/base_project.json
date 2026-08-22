@@ -1,0 +1,9 @@
+{
+  "project": "base_project",
+  "ip_version": "apb_gpio_v1",
+  "rtl_file": "rtl/apb_gpio.v",
+  "params": {
+    "NUM_GPIO": 8,
+    "ENABLE_IRQ": 1
+  }
+}

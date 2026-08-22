@@ -1,0 +1,23 @@
+TOGGLE COVERAGE:
+
+Toggle coverage for instance : tb_top.dut.u_apb_gpio
+
+    NAME                              Toggle 0->1     Toggle 1->0
+    ==============================================================
+    pclk                                  Covered          Covered
+    presetn                               Covered          Covered
+    psel                                  Covered          Covered
+    penable                               Covered          Covered
+    pwrite                                Covered          Covered
+    pready                                Covered          Covered
+    pslverr                               Not Covered      Not Covered
+    paddr[7]                              Covered          Covered
+    paddr[2]                              Covered          Covered
+    gpio_dir[0]                           Covered          Covered
+    gpio_dir[3]                           Covered          Covered
+    gpio_out[0]                           Covered          Covered
+    gpio_out[3]                           Not Covered      Not Covered
+    status_reg[7]                         Covered          Covered
+    status_reg[16]                        Not Covered      Not Covered
+    status_reg[31]                        Not Covered      Not Covered
+    irq                                   Not Covered      Not Covered

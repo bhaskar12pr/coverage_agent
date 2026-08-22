@@ -1,0 +1,11 @@
+{
+  "project": "deriv_lowpower",
+  "derived_from": "base_project",
+  "ip_version": "apb_gpio_v1",
+  "rtl_file": "rtl/apb_gpio.v",
+  "params": {
+    "NUM_GPIO": 8,
+    "ENABLE_IRQ": 0
+  },
+  "note": "Low-power derivative: no IRQ line wired at SoC level, IRQ logic in apb_gpio is disabled via ENABLE_IRQ=0."
+}

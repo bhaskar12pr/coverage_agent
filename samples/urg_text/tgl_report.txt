@@ -1,0 +1,34 @@
+TOGGLE COVERAGE:
+
+Toggle coverage for instance : tb_top.dut.u_axi_vip.master_agent
+
+    NAME                              Toggle 0->1     Toggle 1->0
+    ==============================================================
+    aclk                                 Covered          Covered
+    aresetn                              Covered          Covered
+    awvalid                              Covered          Not Covered
+    awready                              Not Covered      Not Covered
+    awaddr[31]                           Covered          Covered
+    awaddr[30]                           Covered          Covered
+    awaddr[1]                            Not Covered      Covered
+    awaddr[0]                            Covered          Covered
+    wvalid                               Covered          Covered
+    wready                               Covered          Covered
+    wdata[7]                             Covered          Covered
+    wdata[6]                             Not Covered      Not Covered
+    bvalid                               Covered          Covered
+    bready                               Covered          Covered
+    bresp[1]                             Not Covered      Not Covered
+    bresp[0]                             Covered          Covered
+
+Toggle coverage for instance : tb_top.dut.u_axi_vip.slave_agent
+
+    NAME                              Toggle 0->1     Toggle 1->0
+    ==============================================================
+    arvalid                              Covered          Covered
+    arready                              Covered          Not Covered
+    araddr[3]                            Covered          Covered
+    rvalid                               Not Covered      Not Covered
+    rready                               Covered          Covered
+    rdata[15]                            Covered          Covered
+    rresp[1]                             Covered          Covered
