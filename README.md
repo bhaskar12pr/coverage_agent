@@ -132,6 +132,25 @@ SystemVerilog `always_comb`, nested generates) isn't recognized — a
 miss falls through to `unexplained_gap`, which is the safe failure
 mode (it just means "ask a human," never "silently exclude").
 
+### Instance-aware resolution (multi-IP scans)
+
+Scanning more than one IP together (e.g. a whole SoC) surfaced a real
+bug: signal names like `PREADY`/`PSLVERR` are near-universal across
+APB peripherals, so without knowing *which instance* a candidate is
+for, the classifier would match the first same-named tie-off found in
+*any* scanned file — wrong evidence, sometimes attached to a correct
+verdict by coincidence, sometimes not.
+
+`RtlFacts` now harvests instantiations (`module_name instance_name
+(.port(...), ...)`, matched heuristically — see `_INSTANTIATION_RE` in
+`scanner.py`) from every scanned file, so it knows which module each
+toggle-report instance actually is. A candidate is only matched
+against tie-offs/gates from its *own* module's file(s). If the
+instance can't be resolved this way (the common single-IP scan, no
+SoC-integration file in the scan set), it falls back to searching
+every scanned file — the pre-fix behavior, so single-IP usage is
+unaffected. See `tests/test_instance_scoping.py`.
+
 ### Derivative / IP-version handling
 
 A derivative config (`soc_sample/configs/*.json`) is just
@@ -392,3 +411,5 @@ wording), update that regex.
 - Runtime loop-bound-gated dead code (`if (i < PARAM)` inside `always`/`for`, not `generate if/else`) — confirmed real gap via pulp-platform's `apb_gpio.sv`, see above.
 - `--llm` / `suggest-stimulus` verified against a live API call — built and tested with mocks only, no credentials available in this environment.
 - Actually feeding `suggest-stimulus` output into a real UVM sequence (it proposes stimulus in plain English/register terms; turning that into runnable sequence code is a separate step).
+- Multi-level hierarchy tracing: if a tie-off is declared in a sub-module and reaches a top-level port only via a plain wire pass-through (`.PSLVERR(PSLVERR)` at the instantiation, no logic in between), the scanner won't trace through — it only looks in the exact file whose module matches the toggle-report instance's own name. Confirmed real via pulp-platform's `apb_spi_master.sv` (see `../SOC_VERIF`): its real tie-off lives in `spi_master_apb_if.sv`, one level down. Falls through to `unexplained_gap`, not a wrong guess.
+- Tie-offs driven by procedural logic (`always_comb`/`always @(*)`) — even an unconditional one — aren't recognized, only plain `assign`. Confirmed real via `apb_timer.sv`'s top-level `PREADY`/`PSLVERR`, which turned out to be genuinely conditional (an `if/else` on an internal mux select) once actually read — a case where the scanner's inability to parse procedural assigns protected against a wrong "tie-off" verdict, not just a missed one.
