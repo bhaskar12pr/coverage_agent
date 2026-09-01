@@ -115,20 +115,27 @@ def _resolve_rtl_paths(args: argparse.Namespace, config: dict, config_path: str)
 
 
 def _prepare_gap_analysis(args: argparse.Namespace):
-    """Shared setup for suggest-excludes and suggest-stimulus: parse
-    the toggle report, load the config, resolve+scan RTL. Returns
-    (all_bins, config, rtl_paths, rtl_facts, merged_params, error_code)
-    — error_code is None on success (an error is already printed to
-    stderr by this point on failure, so the caller only checks the
-    code)."""
+    """Shared setup for suggest-excludes/suggest-stimulus/verify-excludes:
+    parse the toggle report, load the config, resolve+scan RTL. Returns
+    (all_bins, config, rtl_paths, rtl_facts, config_params, merged_params,
+    error_code) — error_code is None on success (an error is already
+    printed to stderr by this point on failure, so the caller only
+    checks the code).
+
+    config_params is the derivative's own param overrides ONLY — pass
+    this to suggest_excludes()/verify_exclusions() (which resolve each
+    tie-off/gate against its own source file's RTL defaults + this
+    override, see RtlFacts.params_for). merged_params is an
+    informational last-file-wins merge across every scanned file —
+    fine for LLM prompt context, never for deterministic resolution."""
     try:
         files = _iter_input_files(args.report)
     except FileNotFoundError:
         print(f"error: report path not found: {args.report}", file=sys.stderr)
-        return None, None, None, None, None, 2
+        return None, None, None, None, None, None, 2
     if not files:
         print(f"error: no .html/.txt report files found under {args.report}", file=sys.stderr)
-        return None, None, None, None, None, 2
+        return None, None, None, None, None, None, 2
 
     all_bins: list[ToggleBin] = []
     for f in files:
@@ -138,7 +145,7 @@ def _prepare_gap_analysis(args: argparse.Namespace):
         config = _load_config(args.config)
     except (OSError, json.JSONDecodeError) as e:
         print(f"error: could not read config {args.config}: {e}", file=sys.stderr)
-        return None, None, None, None, None, 2
+        return None, None, None, None, None, None, 2
 
     rtl_paths = _resolve_rtl_paths(args, config, args.config)
     if not rtl_paths:
@@ -147,15 +154,16 @@ def _prepare_gap_analysis(args: argparse.Namespace):
             "\"rtl_file\" in the config (resolved relative to the config's project root).",
             file=sys.stderr,
         )
-        return None, None, None, None, None, 2
+        return None, None, None, None, None, None, 2
     missing = [p for p in rtl_paths if not os.path.isfile(p)]
     if missing:
         print(f"error: RTL file(s) not found: {missing}", file=sys.stderr)
-        return None, None, None, None, None, 2
+        return None, None, None, None, None, None, 2
 
     rtl_facts = scan_rtl_files(rtl_paths)
-    merged_params = {**rtl_facts.params, **config.get("params", {})}
-    return all_bins, config, rtl_paths, rtl_facts, merged_params, None
+    config_params = config.get("params", {})
+    merged_params = {**rtl_facts.params, **config_params}
+    return all_bins, config, rtl_paths, rtl_facts, config_params, merged_params, None
 
 
 def _read_rtl_texts(rtl_paths: list[str]) -> dict[str, str]:
@@ -167,11 +175,11 @@ def _read_rtl_texts(rtl_paths: list[str]) -> dict[str, str]:
 
 
 def cmd_suggest_excludes(args: argparse.Namespace) -> int:
-    all_bins, config, rtl_paths, rtl_facts, merged_params, err = _prepare_gap_analysis(args)
+    all_bins, config, rtl_paths, rtl_facts, config_params, merged_params, err = _prepare_gap_analysis(args)
     if err is not None:
         return err
 
-    candidates = suggest_excludes(all_bins, rtl_facts, merged_params, scope=args.scope or "")
+    candidates = suggest_excludes(all_bins, rtl_facts, config_params, scope=args.scope or "")
 
     if args.llm:
         n_eligible = sum(1 for c in candidates if c.llm_eligible)
@@ -233,13 +241,13 @@ def cmd_gen_excludes(args: argparse.Namespace) -> int:
 
 
 def cmd_suggest_stimulus(args: argparse.Namespace) -> int:
-    all_bins, config, rtl_paths, rtl_facts, merged_params, err = _prepare_gap_analysis(args)
+    all_bins, config, rtl_paths, rtl_facts, config_params, merged_params, err = _prepare_gap_analysis(args)
     if err is not None:
         return err
 
     from coverage_agent.exclude.candidates import UNEXPLAINED_GAP
 
-    candidates = suggest_excludes(all_bins, rtl_facts, merged_params, scope=args.scope or "")
+    candidates = suggest_excludes(all_bins, rtl_facts, config_params, scope=args.scope or "")
     real_gaps = [c for c in candidates if c.disposition == UNEXPLAINED_GAP]
 
     project = config.get("project", os.path.basename(args.config))
@@ -311,7 +319,7 @@ def _load_exclusions_under_review(path: str, include_unapproved: bool) -> tuple[
 
 
 def cmd_verify_excludes(args: argparse.Namespace) -> int:
-    all_bins, config, rtl_paths, rtl_facts, merged_params, err = _prepare_gap_analysis(args)
+    all_bins, config, rtl_paths, rtl_facts, config_params, merged_params, err = _prepare_gap_analysis(args)
     if err is not None:
         return err
 
@@ -328,7 +336,7 @@ def cmd_verify_excludes(args: argparse.Namespace) -> int:
         print(msg)
         return 0
 
-    results = verify_exclusions(exclusions, all_bins, rtl_facts, merged_params)
+    results = verify_exclusions(exclusions, all_bins, rtl_facts, config_params)
     print(format_verification_console(results))
     if n_skipped:
         print(f"\n({n_skipped} entries in {args.exclude_file} skipped — not approved; pass --all to check them too)")

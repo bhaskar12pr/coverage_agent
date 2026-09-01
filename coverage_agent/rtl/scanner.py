@@ -22,7 +22,11 @@ from dataclasses import dataclass
 _COMMENT_LINE_RE = re.compile(r"//.*")
 _COMMENT_BLOCK_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 
-_PARAM_RE = re.compile(r"\bparameter\s+(?:\w+\s+)?(\w+)\s*=\s*(-?\d+)")
+# Allows any number of leading type-qualifier tokens before the param
+# name — "parameter NUM_GPIO = 8" and "parameter int unsigned
+# NB_MASTER = 8" both match (found via real RTL: pulp-platform's
+# apb_node.sv uses "int unsigned", which a single-token allowance missed).
+_PARAM_RE = re.compile(r"\bparameter\s+(?:\w+\s+)*(\w+)\s*=\s*(-?\d+)")
 
 _ASSIGN_RE = re.compile(
     r"\bassign\s+(?P<name>\w+)\s*(?:\[\s*(?P<range>[^\]]+?)\s*\])?\s*=\s*(?P<rhs>[^;]+);",
@@ -104,7 +108,23 @@ class RtlFacts:
     source_files: list[str]
     tie_offs: list[TieOff]
     generate_gates: list[GenerateGate]
+    # Flat, last-file-wins merge of every file's declared parameter
+    # defaults — informational only (e.g. shown to an LLM prompt).
+    # NEVER use this for resolving a specific TieOff/GenerateGate's
+    # range/condition: two different files/modules commonly reuse
+    # generic parameter names (BUFFER_DEPTH, TX_FIFO_DEPTH, ...) with
+    # different values — confirmed with real RTL (pulp-platform's
+    # apb_uart_sv.sv declares TX_FIFO_DEPTH=16, uart_interrupt.sv
+    # declares TX_FIFO_DEPTH=32; scanning both together would silently
+    # pick whichever file happened to be scanned last). Use
+    # `params_for(source)` instead, which is scoped to one file.
     params: dict[str, int]
+    params_by_file: dict[str, dict[str, int]]
+
+    def params_for(self, source: str, overrides: dict) -> dict:
+        """RTL defaults declared in `source` only, with `overrides`
+        (the active derivative config's params) taking precedence."""
+        return {**self.params_by_file.get(source, {}), **overrides}
 
 
 def _strip_comments(text: str) -> str:
@@ -198,18 +218,26 @@ def scan_rtl_text(text: str, source: str = "<string>") -> RtlFacts:
     known_params = set(params.keys())
     tie_offs = _scan_tie_offs(clean, known_params, source)
     gates = _scan_generate_gates(clean, known_params, source)
-    return RtlFacts(source_files=[source], tie_offs=tie_offs, generate_gates=gates, params=params)
+    return RtlFacts(
+        source_files=[source], tie_offs=tie_offs, generate_gates=gates,
+        params=params, params_by_file={source: params},
+    )
 
 
 def scan_rtl_files(paths: list[str]) -> RtlFacts:
     all_tie_offs: list[TieOff] = []
     all_gates: list[GenerateGate] = []
     all_params: dict[str, int] = {}
+    params_by_file: dict[str, dict[str, int]] = {}
     for path in paths:
         with open(path, encoding="utf-8", errors="replace") as f:
             text = f.read()
         facts = scan_rtl_text(text, source=path)
         all_tie_offs.extend(facts.tie_offs)
         all_gates.extend(facts.generate_gates)
-        all_params.update(facts.params)
-    return RtlFacts(source_files=list(paths), tie_offs=all_tie_offs, generate_gates=all_gates, params=all_params)
+        all_params.update(facts.params)  # informational merge only — see RtlFacts.params docstring
+        params_by_file[path] = facts.params
+    return RtlFacts(
+        source_files=list(paths), tie_offs=all_tie_offs, generate_gates=all_gates,
+        params=all_params, params_by_file=params_by_file,
+    )

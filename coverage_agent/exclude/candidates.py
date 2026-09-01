@@ -59,11 +59,20 @@ def _parse_signal(name: str) -> tuple[str, int | None]:
     return m.group("base"), (int(bit) if bit is not None else None)
 
 
-def _classify_never_toggled(bin_: ToggleBin, rtl: RtlFacts, params: dict) -> ExcludeCandidate:
+def _classify_never_toggled(bin_: ToggleBin, rtl: RtlFacts, config_params: dict) -> ExcludeCandidate:
+    """`config_params` is the active derivative's own param overrides
+    ONLY — never a pre-merged dict of every scanned file's RTL
+    defaults. Each tie-off/gate is resolved against its OWN source
+    file's declared defaults (via rtl.params_for), overridden by
+    config_params — this matters once more than one RTL file is
+    scanned together, since real IPs commonly reuse generic parameter
+    names (BUFFER_DEPTH, TX_FIFO_DEPTH, ...) with different values
+    per file/module."""
     base, bit = _parse_signal(bin_.signal)
 
     for tie_off in rtl.tie_offs:
-        if tie_off.signal == base and tie_off.contains_bit(bit, params):
+        effective_params = rtl.params_for(tie_off.source, config_params)
+        if tie_off.signal == base and tie_off.contains_bit(bit, effective_params):
             where = f"[{bit}]" if bit is not None else ""
             return ExcludeCandidate(
                 instance=bin_.instance,
@@ -76,8 +85,9 @@ def _classify_never_toggled(bin_: ToggleBin, rtl: RtlFacts, params: dict) -> Exc
     for gate in rtl.generate_gates:
         if gate.signal != base:
             continue
+        effective_params = rtl.params_for(gate.source, config_params)
         try:
-            cond_true = eval_bool(gate.condition, params)
+            cond_true = eval_bool(gate.condition, effective_params)
         except UnsupportedExpression:
             continue
         active_is_tied = gate.true_is_tied if cond_true else gate.false_is_tied
@@ -163,8 +173,12 @@ def suggest_excludes(
     scope: str = "",
 ) -> list[ExcludeCandidate]:
     """Build exclude candidates for a set of toggle bins under one
-    derivative's parameter values. `params` should be the RTL's
-    declared defaults overridden by the active config's params."""
+    derivative's parameter values. `params` is the active config's own
+    param overrides — do NOT pre-merge in RTL-declared defaults from
+    every scanned file; each candidate is resolved against its own
+    source file's declared defaults internally (see
+    RtlFacts.params_for), which matters once you scan more than one
+    RTL file that reuses a generic parameter name."""
     report = build_gap_report(bins, scope=scope)
     candidates: list[ExcludeCandidate] = []
 
