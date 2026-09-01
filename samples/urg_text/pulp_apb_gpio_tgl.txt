@@ -1,0 +1,19 @@
+TOGGLE COVERAGE:
+
+Toggle coverage for instance : chip_top.u_apb_gpio
+
+    NAME                              Toggle 0->1     Toggle 1->0
+    ==============================================================
+    HCLK                                  Covered          Covered
+    HRESETn                               Covered          Covered
+    PSEL                                  Covered          Covered
+    PENABLE                               Covered          Covered
+    PWRITE                                Covered          Covered
+    PREADY                                Not Covered      Not Covered
+    PSLVERR                               Not Covered      Not Covered
+    PADDR[6]                              Covered          Covered
+    PWDATA[3]                             Covered          Covered
+    gpio_out[0]                           Covered          Covered
+    gpio_out[5]                           Not Covered      Not Covered
+    gpio_dir[0]                           Covered          Covered
+    interrupt                             Not Covered      Not Covered

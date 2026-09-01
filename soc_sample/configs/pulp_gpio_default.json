@@ -1,0 +1,11 @@
+{
+  "project": "pulp_gpio_default",
+  "ip_version": "pulp-platform/apb_gpio@f82caeb",
+  "rtl_file": "external/pulp_apb_gpio/apb_gpio.sv",
+  "params": {
+    "APB_ADDR_WIDTH": 12,
+    "PAD_NUM": 32,
+    "NBIT_PADCFG": 4
+  },
+  "note": "Real RTL from pulp-platform/apb_gpio (Solderpad HL v0.51) — see soc_sample/external/pulp_apb_gpio/ATTRIBUTION.md. Default params match the RTL's own defaults; no second real derivative config is known for this standalone IP."
+}

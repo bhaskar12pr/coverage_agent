@@ -321,6 +321,37 @@ design**. It has, on purpose:
 `pslverr` (illegal-address trap) instead of tying it off, used to
 prove exclusions don't get reused blindly across IP versions.
 
+### Real external RTL: `soc_sample/external/pulp_apb_gpio/`
+
+`apb_gpio.sv` here is **real, unmodified RTL** from
+[pulp-platform/apb_gpio](https://github.com/pulp-platform/apb_gpio)
+(ETH Zurich/University of Bologna, Solderpad HL v0.51 — permissive,
+see `LICENSE`/`ATTRIBUTION.md` in that directory), pulled in to
+validate the scanner against something not built to fit its patterns.
+Un-fabricated results, `tests/test_real_pulp_gpio.py`:
+
+- Scanner correctly finds `PSLVERR` and `PREADY` as real tie-offs
+  (`assign PSLVERR = 1'b0;` / `assign PREADY = 1'b1;`).
+- **Real scanner gap surfaced by real RTL**: this IP's `PAD_NUM`
+  parameter (32 vs up to 64) gates its upper register bank via runtime
+  `if (i < PAD_NUM)` loop guards inside `always`/`for` loops — not
+  `generate if/else`. The scanner doesn't recognize that shape yet, so
+  those signals correctly fall through to `unexplained_gap` (the safe
+  default) rather than being misclassified either way.
+- Real live signals with no matching RTL pattern (`interrupt`,
+  `gpio_out[5]`) correctly stay `unexplained_gap` — proof the tool
+  doesn't treat "real RTL" as license to guess.
+
+OpenTitan's GPIO IP (`hw/top_{earlgrey,darjeeling,englishbreakfast}/ip_autogen/gpio/`,
+Apache 2.0) was considered first — it's an even better real
+*derivative* example (`GpioGpioAsHwStrapsEn` defaults to `0` in
+earlgrey vs `1` in darjeeling, tying off vs. actually driving a whole
+block of strap-sampling signals, generated per chip) — but its
+register interface uses struct-field signal names
+(`hw2reg.hw_straps_data_in_valid.de`), which the scanner's
+`\w+`-only identifier matching doesn't parse. Worth revisiting once
+the scanner supports dotted signal names; not pulled into the repo yet.
+
 Swap in your real RTL/configs the same way once available.
 
 ## Run the tests
@@ -357,5 +388,7 @@ wording), update that regex.
 - Verified real exclusion-file syntax — pending a real sample from you (see above).
 - Verified real `urg` toggle-report syntax — pending a real sample from you (same, since day one).
 - RTL scanner coverage beyond tie-offs and if/else `generate` (case-generate, `always`-block tie-offs, nested generates).
+- Struct-field/dotted signal names in tie-off and generate-gate detection (`reg2hw.foo.d` style) — confirmed real gap via OpenTitan's GPIO IP, see above.
+- Runtime loop-bound-gated dead code (`if (i < PARAM)` inside `always`/`for`, not `generate if/else`) — confirmed real gap via pulp-platform's `apb_gpio.sv`, see above.
 - `--llm` / `suggest-stimulus` verified against a live API call — built and tested with mocks only, no credentials available in this environment.
 - Actually feeding `suggest-stimulus` output into a real UVM sequence (it proposes stimulus in plain English/register terms; turning that into runnable sequence code is a separate step).
