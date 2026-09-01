@@ -59,6 +59,21 @@ def _parse_signal(name: str) -> tuple[str, int | None]:
     return m.group("base"), (int(bit) if bit is not None else None)
 
 
+def _candidate_files(instance: str, rtl: RtlFacts) -> set[str] | None:
+    """Which scanned file(s) implement this toggle-report instance's
+    module, so a same-named signal in a DIFFERENT IP's file (PREADY,
+    PSLVERR, ... are extremely common across APB peripherals) can't be
+    matched to the wrong instance. Uses the leaf instance name (the
+    last '.'-separated segment) against instantiations found while
+    scanning — see rtl.instance_to_module. Returns None when the
+    instance wasn't found in any instantiation (e.g. a single-IP scan
+    with no SoC-integration file in the scan set) — callers should
+    fall back to searching every scanned file in that case, the
+    pre-instance-aware behavior."""
+    leaf = instance.rsplit(".", 1)[-1]
+    return rtl.files_for_instance(leaf)
+
+
 def _classify_never_toggled(bin_: ToggleBin, rtl: RtlFacts, config_params: dict) -> ExcludeCandidate:
     """`config_params` is the active derivative's own param overrides
     ONLY — never a pre-merged dict of every scanned file's RTL
@@ -69,8 +84,11 @@ def _classify_never_toggled(bin_: ToggleBin, rtl: RtlFacts, config_params: dict)
     names (BUFFER_DEPTH, TX_FIFO_DEPTH, ...) with different values
     per file/module."""
     base, bit = _parse_signal(bin_.signal)
+    candidate_files = _candidate_files(bin_.instance, rtl)
 
     for tie_off in rtl.tie_offs:
+        if candidate_files is not None and tie_off.source not in candidate_files:
+            continue
         effective_params = rtl.params_for(tie_off.source, config_params)
         if tie_off.signal == base and tie_off.contains_bit(bit, effective_params):
             where = f"[{bit}]" if bit is not None else ""
@@ -84,6 +102,8 @@ def _classify_never_toggled(bin_: ToggleBin, rtl: RtlFacts, config_params: dict)
 
     for gate in rtl.generate_gates:
         if gate.signal != base:
+            continue
+        if candidate_files is not None and gate.source not in candidate_files:
             continue
         effective_params = rtl.params_for(gate.source, config_params)
         try:

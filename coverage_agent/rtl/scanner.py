@@ -54,6 +54,23 @@ _CONST_TOKEN_RE = re.compile(
     r"[A-Za-z_]\w*|\d+'[bBhHdDoO][0-9a-fA-Fxz_]+|\d+|[{}()+\-*,]"
 )
 
+_MODULE_HEADER_RE = re.compile(r"\bmodule\s+(\w+)")
+
+# Heuristic module-instantiation matcher: <module> [#(params)] <instance> (
+#   .port(...
+# Requiring the opening paren of the instantiation to be followed by a
+# named `.port(` connection is what tells this apart from a module
+# DECLARATION header (module foo #(...) (input a, ...);  — ANSI port
+# lists start with a type keyword, never `.`) and from control
+# constructs (if/case/always(...) never have `.name(` right inside).
+_INSTANTIATION_RE = re.compile(
+    r"(?<![\w.])"
+    r"(?P<module>[A-Za-z_]\w*)\s*"
+    r"(?:#\s*\((?:[^()]|\([^()]*\))*\)\s*)?"
+    r"(?P<inst>[A-Za-z_]\w*)\s*"
+    r"\(\s*\n?\s*\.",
+)
+
 
 @dataclass(frozen=True)
 class TieOff:
@@ -120,11 +137,29 @@ class RtlFacts:
     # `params_for(source)` instead, which is scoped to one file.
     params: dict[str, int]
     params_by_file: dict[str, dict[str, int]]
+    # First `module <name>` declared in each file — assumes one
+    # primary module per file, true of every real IP scanned so far
+    # (see README.md if you hit a file that breaks this).
+    module_by_file: dict[str, str]
+    # Leaf instance name -> module name, harvested from instantiations
+    # found in ANY scanned file (so scanning a SoC-integration file
+    # alongside the IPs it instantiates resolves this automatically).
+    instance_to_module: dict[str, str]
 
     def params_for(self, source: str, overrides: dict) -> dict:
         """RTL defaults declared in `source` only, with `overrides`
         (the active derivative config's params) taking precedence."""
         return {**self.params_by_file.get(source, {}), **overrides}
+
+    def files_for_instance(self, leaf_instance: str) -> set[str] | None:
+        """Which scanned file(s) implement `leaf_instance`'s module —
+        None if the instance wasn't found in any instantiation we
+        scanned (callers should fall back to searching all files, the
+        pre-instance-aware behavior, rather than finding nothing)."""
+        module = self.instance_to_module.get(leaf_instance)
+        if module is None:
+            return None
+        return {f for f, m in self.module_by_file.items() if m == module}
 
 
 def _strip_comments(text: str) -> str:
@@ -212,15 +247,36 @@ def _scan_generate_gates(text: str, known_params: set[str], source: str) -> list
     return gates
 
 
+def _first_module_name(text: str) -> str | None:
+    m = _MODULE_HEADER_RE.search(text)
+    return m.group(1) if m else None
+
+
+def _find_instantiations(text: str) -> dict[str, str]:
+    """Returns {instance_name: module_name} for every instantiation
+    this heuristic recognizes in `text`. See _INSTANTIATION_RE for the
+    disambiguation logic vs. module declarations / control constructs."""
+    found = {}
+    for m in _INSTANTIATION_RE.finditer(text):
+        module, inst = m.group("module"), m.group("inst")
+        if module in _VERILOG_KEYWORDS or inst in _VERILOG_KEYWORDS:
+            continue
+        found[inst] = module
+    return found
+
+
 def scan_rtl_text(text: str, source: str = "<string>") -> RtlFacts:
     clean = _strip_comments(text)
     params = {name: int(val) for name, val in _PARAM_RE.findall(clean)}
     known_params = set(params.keys())
     tie_offs = _scan_tie_offs(clean, known_params, source)
     gates = _scan_generate_gates(clean, known_params, source)
+    module_name = _first_module_name(clean)
     return RtlFacts(
         source_files=[source], tie_offs=tie_offs, generate_gates=gates,
         params=params, params_by_file={source: params},
+        module_by_file={source: module_name} if module_name else {},
+        instance_to_module=_find_instantiations(clean),
     )
 
 
@@ -229,6 +285,8 @@ def scan_rtl_files(paths: list[str]) -> RtlFacts:
     all_gates: list[GenerateGate] = []
     all_params: dict[str, int] = {}
     params_by_file: dict[str, dict[str, int]] = {}
+    module_by_file: dict[str, str] = {}
+    instance_to_module: dict[str, str] = {}
     for path in paths:
         with open(path, encoding="utf-8", errors="replace") as f:
             text = f.read()
@@ -237,7 +295,10 @@ def scan_rtl_files(paths: list[str]) -> RtlFacts:
         all_gates.extend(facts.generate_gates)
         all_params.update(facts.params)  # informational merge only — see RtlFacts.params docstring
         params_by_file[path] = facts.params
+        module_by_file.update(facts.module_by_file)
+        instance_to_module.update(facts.instance_to_module)
     return RtlFacts(
         source_files=list(paths), tie_offs=all_tie_offs, generate_gates=all_gates,
         params=all_params, params_by_file=params_by_file,
+        module_by_file=module_by_file, instance_to_module=instance_to_module,
     )
