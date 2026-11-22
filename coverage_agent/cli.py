@@ -12,6 +12,7 @@ from coverage_agent.exclude import (
     format_ucm_exclusions,
     format_verification_console,
     load_review_file,
+    parse_exclusion_targets,
     parse_ucm_exclusion_file,
     suggest_excludes,
     verify_exclusions,
@@ -312,7 +313,7 @@ def _load_exclusions_under_review(path: str, include_unapproved: bool) -> tuple[
     try:
         entries = json.loads(text)
     except json.JSONDecodeError:
-        return parse_ucm_exclusion_file(text), 0
+        return parse_exclusion_targets(text), 0
 
     pairs = []
     skipped = 0

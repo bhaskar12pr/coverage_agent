@@ -61,10 +61,15 @@ _DIRECTIONS = {"INPUT", "OUTPUT", "INOUT"}
 
 
 _SECTION_ANYWHERE_RE = re.compile(r"^Toggle Coverage for (?:Instance|Module)\s*:", re.MULTILINE)
+# the column header of a real detail table: "Toggle Toggle 1->0 [Tests] Toggle 0->1"
+_REAL_HEADER_RE = re.compile(r"^\s+Toggle\s+Toggle 1->0\s+(?:Tests\s+)?Toggle 0->1", re.MULTILINE)
 
 
 def looks_like_modinfo(text: str) -> bool:
-    return _SECTION_ANYWHERE_RE.search(text) is not None
+    """Real urg modinfo format: the section heading AND a real detail-table
+    header. The heading alone isn't enough — a legacy two-column report
+    can carry the same heading (see tests/test_urg_modinfo.py)."""
+    return _SECTION_ANYWHERE_RE.search(text) is not None and _REAL_HEADER_RE.search(text) is not None
 
 
 @dataclass

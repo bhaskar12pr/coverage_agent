@@ -56,7 +56,9 @@ def build_gap_report(bins: list[ToggleBin], scope: str = "") -> GapReport:
                 continue
             transitions_total += b.width
             transitions_covered += b.width if hit else 0
-    bins = [b for b in bins if not b.waived]
+    # Drop rows with both directions waived; for a row with only one
+    # direction waived, judge just the other direction.
+    bins = [b.effective() for b in bins if not b.waived]
 
     never_toggled = [b for b in bins if b.never_toggled]
     missing_0_to_1 = [b for b in bins if not b.never_toggled and not b.hit_0_to_1]

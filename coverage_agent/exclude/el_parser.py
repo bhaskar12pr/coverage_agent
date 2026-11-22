@@ -137,6 +137,16 @@ def parse_cov_cfg_nodes(text: str) -> list[NodeExclusion]:
     return out
 
 
+def parse_exclusion_targets(text: str) -> list[tuple[str, str, str]]:
+    """(scope, signal, scope_kind) toggle exclusions in file order —
+    like parse_ucm_exclusion_file, but keeps whether a real .el entry
+    sits under INSTANCE: or MODULE:, so verification can apply a module
+    entry to every instance of that module."""
+    if not re.search(r'^\s*Exclude\s+Toggle\s+"', text, re.MULTILINE):
+        return [(e.scope, e.signal_with_bit, e.scope_kind) for e in parse_vcs_el(text) if e.metric == "toggle"]
+    return [(inst, sig, "instance") for inst, sig in parse_ucm_exclusion_file(text)]
+
+
 def parse_ucm_exclusion_file(text: str) -> list[tuple[str, str]]:
     """Returns [(instance, signal), ...] toggle exclusions in file order,
     from either a real VCS .el file or the legacy generated shape.
