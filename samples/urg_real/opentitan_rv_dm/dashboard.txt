@@ -1,0 +1,33 @@
+Dashboard
+
+Date: Fri Jul 26 00:08:08 2024
+
+User: unknown
+
+Version: T-2022.06-SP2
+Command line: urg -lca -full64 +urg+lic+wait -show tests -grade index testfile -group ratio -group lrm_bin_name -group instcov_for_score -dir /workspace/cov_merge/merged.vdb -line nocasedef -format both -report /workspace/cov_report
+Number of tests: 444
+
+-------------------------------------------------------------------------------
+Total Coverage Summary 
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT GROUP  
+ 83.52  95.82  84.14  89.91  75.00  88.33  98.53  52.90 
+
+
+-------------------------------------------------------------------------------
+Hierarchical coverage data for top-level instances 
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT NAME 
+ 88.62  95.82  84.14  89.91  75.00  88.33  98.53 tb   
+
+
+-------------------------------------------------------------------------------
+Total Module Definition Coverage Summary 
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT 
+ 88.84  93.66  84.85  92.74  78.08  87.00  96.71 
+
+
+-------------------------------------------------------------------------------
+Total Groups Coverage Summary 
+COVERED EXPECTED SCORE  COVERED EXPECTED INST SCORE WEIGHT 
+447     845       52.90 447     845       52.90     1      
+

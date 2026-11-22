@@ -30,22 +30,34 @@ report output:
 Stdlib-only (no pip installs needed) so it runs in locked-down DV
 environments.
 
-## Status: format not yet validated against a real VCS report
+## Status: validated against real VCS reports
 
-This was built without access to a VCS installation, from documented
-`urg` conventions (columns `Name` / `Toggle 0->1` / `Toggle 1->0`,
-status `Covered`/`Not Covered` or `Yes`/`No`, generated via
-`urg -dir simv.vdb -format text|html -metric tgl`). The parsers in
-`coverage_agent/parsers/` match on these keywords/patterns rather than
-fixed column positions, so minor formatting differences should still
-parse — but **run it against a real report from your VCS version
-before trusting the output**. If it parses 0 bins (you'll get a
-warning on stderr) or misses signals, see Troubleshooting below.
+The text parser reads real `urg` output — `modinfo.txt` from
+`urg ... -format text` (or `-format both`) — and has been validated
+against real VCS T-2022.06 reports published by OpenTitan: the `rv_dm`
+and `gpio` IP regressions and the full `top_earlgrey` chip regression.
+For every one of the 96 toggle sections, the parsed bits equal urg's own
+per-section totals in both directions, and the computed toggle score
+equals the urg dashboard (89.91% / 100% / 95.36%). Excerpts and
+provenance: `samples/urg_real/` (`ATTRIBUTION.md`); tests:
+`tests/test_urg_modinfo.py`, `tests/test_el_parser.py`.
+
+Real-format rows are bit ranges (`data_i[56:6]`), struct fields
+(`alert_rx_i[0].ping_n`), per-direction status `Yes`/`No`/`Unreachable`/
+`Excluded`, the tests that hit each direction, port direction, and the
+exclusion annotation. `Excluded` and `Unreachable` rows are not counted
+as gaps. Point the tool at a `urgReport/` directory and it reads only
+`modinfo.txt`.
+
+Still unverified: the **HTML** parser and the `gen-excludes` **writer**
+(see "Exclusion file format" below). Roadmap for SoC-level use,
+derivatives and the coverage-closure loop: `docs/SOC_TOGGLE_PLAN.md`.
 
 ## Generate a urg toggle report (VCS)
 
 ```sh
-urg -dir simv.vdb -format text -metric tgl -hier <hier_file>   # or -format html
+urg -dir simv.vdb -format text -metric tgl -hier <hier_file>   # writes urgReport/modinfo.txt
+# add -show tests to get the per-direction "Tests" columns, -elfile <x.el> to apply exclusions
 ```
 
 `-hier` scopes the report to your VIP's instance if you don't want the
@@ -316,14 +328,24 @@ all five came back correctly classified. Also verified the same signal
 under `deriv_lowpower`, mirroring the derivative-awareness guarantee
 from `suggest-excludes`. See `tests/test_verify_excludes.py`.
 
-### Exclusion file format: unverified, same caveat as the toggle parser
+### Exclusion file formats
 
-`gen-excludes` emits a documented-but-unverified VCS/UCM-style
-exclusion syntax (`INSTANCE:` + `Exclude Toggle "sig" -detail "01"
--comment "..."`). You said you'd provide a real exclusion file to
-match against — once you do, update `coverage_agent/exclude/formatter.py`
-accordingly. Don't load the generated `.el` into a real coverage merge
-until you've confirmed the syntax.
+**Reading — validated.** `verify-excludes` reads real VCS `.el` files
+(`CHECKSUM:` / `INSTANCE:` or `MODULE:` / `ANNOTATION:` / `Toggle sig
+"decl"`, including single-bit `Toggle sig [39] "..."` entries), plus the
+legacy shape below. All 1,122 Excluded rows in the real Earlgrey report
+trace back to OpenTitan's 12 real `.el` files. `-node` exclusions from a
+`-cm_hier` config are parsed by `parse_cov_cfg_nodes()` (not yet wired
+into the CLI). Stale entries — a signal the report doesn't have — come
+back as `unknown_signal`; on the real Earlgrey data that finds
+`ram_2p_cfg_i.*` (port renamed) and `dio_attr_i[23].*` (pad removed).
+
+**Writing — still unverified.** `gen-excludes` emits the older guessed
+syntax (`INSTANCE:` + `Exclude Toggle "sig" -detail "01" -comment
+"..."`), not the real `.el` format. Switching it is the next step; the
+open question is the per-scope `CHECKSUM:` VCS writes, which this tool
+can't compute. Don't load a generated file into a real coverage merge
+until that's confirmed.
 
 ## Sample IP used for exclude-gen development (`soc_sample/`)
 

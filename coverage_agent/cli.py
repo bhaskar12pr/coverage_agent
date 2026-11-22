@@ -31,6 +31,12 @@ def _iter_input_files(path: str) -> list[str]:
     if os.path.isfile(path):
         return [path]
     if os.path.isdir(path):
+        # A real `urg -format text|both` report directory: modinfo.txt holds
+        # every toggle section. Don't also feed dashboard/hierarchy/mod*.html
+        # pages to the legacy parsers — they'd misread other metrics as toggle.
+        modinfo = sorted(glob.glob(os.path.join(path, "**", "modinfo.txt"), recursive=True))
+        if modinfo:
+            return modinfo
         files = []
         for ext in _HTML_EXTS + _TEXT_EXTS:
             files.extend(glob.glob(os.path.join(path, "**", f"*{ext}"), recursive=True))

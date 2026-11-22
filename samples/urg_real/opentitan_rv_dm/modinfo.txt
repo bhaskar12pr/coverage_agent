@@ -1,0 +1,55 @@
+Toggle Coverage for Instance : tb.dut.tl_adapter_host_sba.u_rsp_chk.u_chk
+                Total Covered Percent 
+Totals          4     3       75.00   
+Total Bits      260   158     60.77   
+Total Bits 0->1 130   79      60.77   
+Total Bits 1->0 130   79      60.77   
+
+                              
+Ports          4   3   75.00  
+Port Bits      260 158 60.77  
+Port Bits 0->1 130 79  60.77  
+Port Bits 1->0 130 79  60.77  
+
+Port Details
+                Toggle Toggle 1->0 Tests        Toggle 0->1 Tests      Direction 
+data_i[5:0]     Yes    Yes         *T1,*T10,*T7 Yes         T7,T16,T25 INPUT     
+data_i[56:6]    No     No                       No                     INPUT     
+data_i[63:57]   Yes    Yes         T1,T10,T7    Yes         T1,T10,T7  INPUT     
+data_o[56:0]    Yes    Yes         T1,T10,T7    Yes         T7,T16,T25 OUTPUT    
+syndrome_o[6:0] Yes    Yes         T16,T25,T6   Yes         T7,T16,T32 OUTPUT    
+err_o[1:0]      Yes    Yes         T7,T16,T25   Yes         T7,T16,T49 OUTPUT    
+
+*Tests covering at least one bit in the range
+
+-------------------------------------------------------------------------------
+Toggle Coverage for Module : prim_alert_sender
+                Total Covered Percent 
+Totals          12    10      83.33   
+Total Bits      24    20      83.33   
+Total Bits 0->1 12    10      83.33   
+Total Bits 1->0 12    10      83.33   
+
+                            
+Ports          12 10 83.33  
+Port Bits      24 20 83.33  
+Port Bits 0->1 12 10 83.33  
+Port Bits 1->0 12 10 83.33  
+
+Port Details
+                   Toggle Toggle 1->0 Tests       Toggle 0->1 Tests       Direction 
+clk_i              Yes    Yes         T1,T2,T3    Yes         T1,T2,T3    INPUT     
+rst_ni             Yes    Yes         T3,T7,T5    Yes         T1,T2,T3    INPUT     
+alert_test_i       Yes    Yes         T2,T39,T40  Yes         T2,T39,T40  INPUT     
+alert_req_i        Yes    Yes         T41,T42,T43 Yes         T41,T42,T43 INPUT     
+alert_ack_o        Yes    Yes         T41,T42,T43 Yes         T41,T42,T43 OUTPUT    
+alert_state_o      Yes    Yes         T41,T42,T43 Yes         T41,T42,T43 OUTPUT    
+alert_rx_i.ack_n   Yes    Yes         T1,T2,T3    Yes         T1,T2,T3    INPUT     
+alert_rx_i.ack_p   Yes    Yes         T2,T39,T40  Yes         T2,T39,T40  INPUT     
+alert_rx_i.ping_n  No     No                      No                      INPUT     
+alert_rx_i.ping_p  No     No                      No                      INPUT     
+alert_tx_o.alert_n Yes    Yes         T1,T2,T3    Yes         T1,T2,T3    OUTPUT    
+alert_tx_o.alert_p Yes    Yes         T2,T39,T40  Yes         T2,T39,T40  OUTPUT    
+
+
+-------------------------------------------------------------------------------
