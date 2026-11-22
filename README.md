@@ -49,6 +49,9 @@ exclusion annotation. `Excluded` and `Unreachable` rows are not counted
 as gaps. Point the tool at a `urgReport/` directory and it reads only
 `modinfo.txt`.
 
+SoC-level tie-off proofs on the elaborated design: see "Proving SoC
+tie-offs" below (`--slang`, optional pyslang).
+
 Still unverified: the **HTML** parser and the `gen-excludes` **writer**
 (see "Exclusion file format" below). Roadmap for SoC-level use,
 derivatives and the coverage-closure loop: `docs/SOC_TOGGLE_PLAN.md`.
@@ -346,6 +349,62 @@ syntax (`INSTANCE:` + `Exclude Toggle "sig" -detail "01" -comment
 open question is the per-scope `CHECKSUM:` VCS writes, which this tool
 can't compute. Don't load a generated file into a real coverage merge
 until that's confirmed.
+
+## Proving SoC tie-offs on the elaborated design (`--slang`, optional)
+
+The regex scanner only sees a tie-off written inside the IP's own file.
+At SoC level most dead bits are constants that travel through the
+hierarchy and through logic. On OpenTitan Earlgrey, for example, a pad's
+`keep_en` is 0 because:
+
+```
+prim_pad_attr        always_comb attr_warl_o = '0; attr_warl_o.invert = 1; ...   (PadType param)
+pinmux               assign dio_attr[k] = dio_pad_attr_q[k] & warl_mask;          (register & mask)
+  -> pinmux.dio_attr_o -> top_earlgrey.dio_attr_o -> chip.dio_attr
+chip_earlgrey_asic   .dio_attr_i({dio_attr[DioSpiDeviceCsb], ..., manual_attr_por_n})
+```
+
+`--slang` elaborates the design with [pyslang](https://github.com/MikePopoloski/slang)
+and propagates constants bit by bit through continuous assigns,
+`always_comb`, port connections, struct fields, arrays, concatenations,
+assignment patterns and constant `if`/`case`. A never-toggled row whose
+bits are all constant becomes a `suggested_exclude` with the value and
+the driver chain as its reason; it still needs `"approved": true`.
+
+```sh
+pip install pyslang
+python3 -m coverage_agent suggest-excludes urgReport/modinfo.txt --config cfg.json \
+    --slang "-f sim.f --top chip_top" --hier-map tb.dut=chip_top --out candidates.json
+python3 -m coverage_agent verify-excludes my.el --report urgReport/modinfo.txt --config cfg.json \
+    --slang "-f sim.f --top chip_top" --hier-map tb.dut=chip_top [--slang-check]
+```
+
+- `--slang` takes a slang command line. VCS-style `-f` files with
+  `+incdir+` / `+define+` work. Use the **same file list and defines
+  the simulation was built with**, including generated files (e.g.
+  OpenTitan's FuseSoC "primgen" wrappers such as `prim_pad_attr`).
+  `--single-unit` is needed for code that relies on macros defined in
+  another file (OpenTitan's `` `ASSERT ``).
+- `--hier-map` maps the report's testbench prefix (`tb.dut`) to the
+  elaborated top (`chip_top`).
+- **Sound by construction:** anything not understood is *unknown*, never
+  constant: flops, black boxes (unknown modules, modules with compile
+  errors), loops, function calls, arithmetic on unknown bits,
+  non-constant indices, inout ports, interfaces, conflicting drivers and
+  combinational cycles. It can only under-prove.
+- **What a proof means:** the RTL cannot toggle the bit. It says nothing
+  about a testbench that `force`s or deposits it. `--slang-check` lists
+  rows that toggled although the RTL holds them constant; on Earlgrey
+  all 85 were testbench forces on TL-UL / JTAG ports. A long list there
+  usually means the file list or defines don't match the simulated
+  build.
+
+Results on the real Earlgrey chip (report and RTL from Jan/Feb 2025;
+see `docs/SOC_TOGGLE_PLAN.md`): 29,054 instances elaborated in about
+10 s. For the padring's 510 existing exclusions, `verify-excludes
+--slang` confirms 491, flags 10 that the RTL does not support, and
+reports 9 as stale. It also found 10 never-toggled padring bits that
+are constant but were not excluded.
 
 ## Sample IP used for exclude-gen development (`soc_sample/`)
 

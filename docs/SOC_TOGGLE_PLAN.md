@@ -111,8 +111,7 @@ up as real never-toggled gaps.
       `CHECKSUM:` per scope that this tool can't compute — confirm
       whether your VCS version accepts an `.el` without it (or with a
       stale one) before loading generated files.
-- [ ] Run `suggest-excludes` on real RTL (OpenTitan GPIO, then
-      Earlgrey). Needs Phase 2 for most SoC-level tie-offs.
+- [x] Run on real RTL: Earlgrey chip with `--slang` (Phase 2).
 
 ### Phase 1 — SoC data model
 - [ ] Instance tree from the report (instance -> module -> params).
@@ -122,15 +121,48 @@ up as real never-toggled gaps.
 - [ ] Streaming parse for very large reports (Earlgrey full report:
       28 MB, ~0.9 s today — fine; revisit at 10x).
 
-### Phase 2 — integration-level dead code
-- [ ] Constant / unconnected ports at instantiation
-      (`.irq_i(1'b0)`, `.dio_attr_i(...)` from tied-off pinmux outputs),
-      propagated into the child IP. This is what would *prove* the 501
-      padring tie-offs that `verify-excludes` can only flag today.
-- [ ] Scanner: `always_comb`, loop guards, struct field names
-      (`hw2reg.x.de`), case-generate.
-- [ ] **Decision:** optional `pyslang` (full elaboration, per-instance
-      params) with regex fallback, so locked-down environments still work.
+### Phase 2 — integration-level dead code (pyslang)
+- [x] `coverage_agent/rtl/slang_const.py`: bit-level constant
+      propagation over the pyslang-elaborated design: continuous
+      assigns, `always_comb` (constant if/case, sequential field writes),
+      port connections in both directions, struct fields, packed and
+      unpacked arrays, concatenations, assignment patterns, bitwise ops
+      with 0/1 dominance. Unknown (never constant) for flops, black
+      boxes, loops, calls, non-constant indices, inout, interfaces,
+      conflicting drivers and cycles. Symbol-level cycles (pad attr ->
+      pad input -> strap sampling -> pad attr) are solved to a fixpoint,
+      so results don't depend on query order.
+- [x] `--slang ARGS` / `--hier-map` / `--slang-check` on
+      `suggest-excludes`, `verify-excludes`, `suggest-stimulus`. Proofs
+      become `suggested_exclude` with the value and a bit-accurate driver
+      chain; unproven rows fall through to the regex scanner.
+- [x] **Validated on OpenTitan `chip_earlgrey_asic`** (RTL at the commit
+      matching the Feb-2025 report; generic primgen wrappers; 58 compile
+      errors in unrelated modules, treated as black boxes): 29,054
+      instances, 9-10 s to elaborate, padring rows solved in about 5 s.
+  - Padring `.el` (510 entries): **491 confirmed**, **10 suspicious**,
+    9 stale. The suspicious ones are `dio_attr_i[3,4,6,7].pull_en/pull_select`,
+    driven by `sensor_ctrl` software-writable registers
+    (`manual_pad_pull_en_q`; the `.el` dates from 2022), and
+    `mio_attr_i[38,39].schmitt_en` (TCK/TRST pads: strap sampling sets
+    `schmitt_en = 1` when JTAG is enabled).
+  - **10 never-toggled padring bits proven constant but not excluded**:
+    `input_disable` of pads 0/5/8 (`manual_attr_por_n` pattern,
+    `manual_attr_flash_test_volt = '0`, `manual_attr_otp_ext_volt = '0`),
+    `drive_strength[0]` of pads 19/20 (spi_device sck/csb are `InputStd`:
+    the input-only mask has no drive strength), pad 1 (`usb_p`)
+    `keep_en/schmitt_en/od_en/slew_rate` (BidirStd mask), and pad 3's
+    `drive_strength[3:0]` (`sensor_ctrl` pattern `default: '0`).
+  - Soundness check over **all 13,312 rows** of the chip report: 0
+    false constants from the engine. 85 rows toggled although the RTL
+    ties them off, and every one is a testbench force: TL-UL `d_sink` /
+    `d_ready` / `a_source` driven by the crossbar tests
+    (`tb__xbar_connect.sv`) and JTAG `tdo/tdo_oe` driven via HDL path by
+    `chip_tap_straps_vseq`.
+- [ ] Remaining scanner gaps for non-pyslang users: `always_comb`, loop
+      guards, struct field names, case-generate (regex path only).
+- [ ] Optional speed-up for very large designs: restrict indexing to
+      the cone of the requested rows.
 
 ### Phase 3 — exclusion categories and reuse
 - [ ] Category per exclusion: tie-off, param-gated, DFT, strap,

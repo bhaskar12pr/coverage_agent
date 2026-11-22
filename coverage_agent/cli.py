@@ -155,6 +155,34 @@ def _prepare_gap_analysis(args: argparse.Namespace):
         return None, None, None, None, None, None, 2
 
     rtl_paths = _resolve_rtl_paths(args, config, args.config)
+    args._const = None
+    if getattr(args, "slang", None):
+        try:
+            from coverage_agent.rtl.slang_const import ConstAnalysis, SlangUnavailable
+        except ImportError as e:  # pragma: no cover
+            print(f"error: {e}", file=sys.stderr)
+            return None, None, None, None, None, None, 2
+        hier_map = {}
+        for m in getattr(args, "hier_map", None) or []:
+            src, sep, dst = m.partition("=")
+            if not sep:
+                print(f"error: --hier-map expects REPORT_PREFIX=ELAB_PREFIX, got {m!r}", file=sys.stderr)
+                return None, None, None, None, None, None, 2
+            hier_map[src] = dst
+        try:
+            args._const = ConstAnalysis(args.slang, hier_map)
+        except (SlangUnavailable, ValueError) as e:
+            print(f"error: --slang: {e}", file=sys.stderr)
+            return None, None, None, None, None, None, 2
+        print(
+            f"pyslang: elaborated {', '.join(args._const.tops)} — {len(args._const.instances)} instances, "
+            f"{args._const.error_count} compile error(s) (modules with errors count as black boxes)",
+            file=sys.stderr,
+        )
+    if not rtl_paths and args._const is not None:
+        rtl_facts = scan_rtl_files([])
+        config_params = config.get("params", {})
+        return all_bins, config, [], rtl_facts, config_params, dict(config_params), None
     if not rtl_paths:
         print(
             "error: no RTL files found. Pass --rtl <file-or-dir>, or set "
@@ -181,12 +209,34 @@ def _read_rtl_texts(rtl_paths: list[str]) -> dict[str, str]:
     return rtl_texts
 
 
+def _report_slang_contradictions(args: argparse.Namespace, bins: list[ToggleBin]) -> None:
+    if not getattr(args, "slang_check", False) or args._const is None:
+        return
+    scope = args.scope or ""
+    bins = [b for b in bins if b.full_name.startswith(scope)]
+    found = args._const.contradictions(bins)
+    if not found:
+        print("pyslang check: no toggled row is constant in the RTL.", file=sys.stderr)
+        return
+    print(
+        f"pyslang check: {len(found)} row(s) TOGGLED in simulation but are constant in the RTL — "
+        "testbench force/deposit, or a file list / defines that don't match the simulated build:",
+        file=sys.stderr,
+    )
+    for b, proof in found[:50]:
+        origin = proof.chain[-1] if proof.chain else ""
+        print(f"  {b.full_name} = {proof.value_str}   ({origin})", file=sys.stderr)
+    if len(found) > 50:
+        print(f"  ... and {len(found) - 50} more", file=sys.stderr)
+
+
 def cmd_suggest_excludes(args: argparse.Namespace) -> int:
     all_bins, config, rtl_paths, rtl_facts, config_params, merged_params, err = _prepare_gap_analysis(args)
     if err is not None:
         return err
 
-    candidates = suggest_excludes(all_bins, rtl_facts, config_params, scope=args.scope or "")
+    candidates = suggest_excludes(all_bins, rtl_facts, config_params, scope=args.scope or "", const=args._const)
+    _report_slang_contradictions(args, all_bins)
 
     if args.llm:
         n_eligible = sum(1 for c in candidates if c.llm_eligible)
@@ -254,7 +304,7 @@ def cmd_suggest_stimulus(args: argparse.Namespace) -> int:
 
     from coverage_agent.exclude.candidates import UNEXPLAINED_GAP
 
-    candidates = suggest_excludes(all_bins, rtl_facts, config_params, scope=args.scope or "")
+    candidates = suggest_excludes(all_bins, rtl_facts, config_params, scope=args.scope or "", const=args._const)
     real_gaps = [c for c in candidates if c.disposition == UNEXPLAINED_GAP]
 
     project = config.get("project", os.path.basename(args.config))
@@ -343,7 +393,8 @@ def cmd_verify_excludes(args: argparse.Namespace) -> int:
         print(msg)
         return 0
 
-    results = verify_exclusions(exclusions, all_bins, rtl_facts, config_params)
+    results = verify_exclusions(exclusions, all_bins, rtl_facts, config_params, const=args._const)
+    _report_slang_contradictions(args, all_bins)
     print(format_verification_console(results))
     if n_skipped:
         print(f"\n({n_skipped} entries in {args.exclude_file} skipped — not approved; pass --all to check them too)")
@@ -440,6 +491,27 @@ def build_parser() -> argparse.ArgumentParser:
     )
     v.set_defaults(func=cmd_verify_excludes)
 
+
+    for sp in (s, st, v):
+        sp.add_argument(
+            "--slang",
+            metavar="ARGS",
+            help="Prove tie-offs on the elaborated design with pyslang (pip install pyslang). "
+            "ARGS is a slang command line, e.g. \"-f sim.f --top chip_top\" (VCS-style -f files "
+            "with +incdir+/+define+ work). Optional; without it only the regex scanner runs.",
+        )
+        sp.add_argument(
+            "--hier-map",
+            action="append",
+            metavar="REPORT=ELAB",
+            help="Map a report hierarchy prefix to the elaborated one, e.g. tb.dut=chip_top. Repeatable.",
+        )
+        sp.add_argument(
+            "--slang-check",
+            action="store_true",
+            help="With --slang: also list rows that toggled in simulation but are constant in the RTL "
+            "(testbench forces, or a file list that doesn't match the simulated build). Slower: solves every row.",
+        )
     return p
 
 

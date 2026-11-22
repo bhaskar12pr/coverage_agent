@@ -47,6 +47,7 @@ def verify_exclusions(
     bins: list[ToggleBin],
     rtl: RtlFacts,
     params: dict,
+    const=None,
 ) -> list[VerificationResult]:
     """`exclusions` is a list of (instance, signal) pairs someone has
     already decided to exclude — from a review JSON or a real exclusion
@@ -65,7 +66,7 @@ def verify_exclusions(
     # untested gap (the question is whether RTL justifies excluding it),
     # not as covered. "Unreachable" (VCS-proven) stays waived.
     bins = [_unexclude(b) for b in bins]
-    ground_truth = {(c.instance, c.signal): c for c in suggest_excludes(bins, rtl, params)}
+    ground_truth = {(c.instance, c.signal): c for c in suggest_excludes(bins, rtl, params, const=const)}
     bin_by_key = {(b.instance, b.signal): b for b in bins}
 
     rows_by_instance: dict[str, list[ToggleBin]] = {}
@@ -139,14 +140,14 @@ def verify_exclusions(
         v, b, cand = worst
         where = "" if len(gap_rows) == 1 else f" [{b.full_name}, 1 of {len(gap_rows)} gap rows this exclusion covers]"
         if v == CONFIRMED:
-            reason = f"RTL scanner agrees: {cand.reason}" + (
+            reason = f"RTL agrees: {cand.reason}" + (
                 "" if len(gap_rows) == 1 else f" (all {len(gap_rows)} covered gap rows justified)"
             )
         elif v == LLM_ONLY:
             reason = f"only an LLM opinion backs this, no deterministic RTL match — re-review: {cand.reason}{where}"
         else:
             reason = (
-                "RTL scanner finds NO justification for excluding this — looks like a real, "
+                "RTL gives NO justification for excluding this — looks like a real, "
                 f"untested gap: {cand.reason}{where}"
             )
         results.append(VerificationResult(label, signal, v, reason))
@@ -190,6 +191,6 @@ def format_verification_console(results: list[VerificationResult]) -> str:
             lines.append(f"  {r.instance}.{r.signal}")
 
     if by_verdict.get(CONFIRMED):
-        lines.append(f"\nCONFIRMED ({len(by_verdict[CONFIRMED])}) — RTL scanner independently agrees, no action needed.")
+        lines.append(f"\nCONFIRMED ({len(by_verdict[CONFIRMED])}) — RTL independently agrees, no action needed.")
 
     return "\n".join(lines)

@@ -74,6 +74,23 @@ def _candidate_files(instance: str, rtl: RtlFacts) -> set[str] | None:
     return rtl.files_for_instance(leaf)
 
 
+def _classify_constant(bin_: ToggleBin, const) -> ExcludeCandidate | None:
+    proof = const.row_constant(bin_.instance, bin_.signal)
+    if proof is None:
+        return None
+    chain = proof.chain
+    origin = chain[-1] if chain else ""
+    path = " <- ".join(chain)
+    return ExcludeCandidate(
+        instance=bin_.instance,
+        signal=bin_.signal,
+        disposition=SUGGESTED_EXCLUDE,
+        reason=f"constant {proof.value_str} in the elaborated design (pyslang constant propagation): {path}",
+        source=origin,
+        gap_kind="never_toggled",
+    )
+
+
 def _classify_never_toggled(bin_: ToggleBin, rtl: RtlFacts, config_params: dict) -> ExcludeCandidate:
     """`config_params` is the active derivative's own param overrides
     ONLY — never a pre-merged dict of every scanned file's RTL
@@ -191,6 +208,7 @@ def suggest_excludes(
     rtl: RtlFacts,
     params: dict,
     scope: str = "",
+    const=None,
 ) -> list[ExcludeCandidate]:
     """Build exclude candidates for a set of toggle bins under one
     derivative's parameter values. `params` is the active config's own
@@ -198,12 +216,35 @@ def suggest_excludes(
     every scanned file; each candidate is resolved against its own
     source file's declared defaults internally (see
     RtlFacts.params_for), which matters once you scan more than one
-    RTL file that reuses a generic parameter name."""
+    RTL file that reuses a generic parameter name.
+
+    `const` (optional) is an rtl.slang_const.ConstAnalysis of the
+    elaborated design. A never-toggled row it proves constant is a
+    SUGGESTED_EXCLUDE backed by that proof (it follows constants through
+    the hierarchy and through logic, which the regex scanner can't);
+    anything it can't prove falls through to the regex scanner as
+    before."""
     report = build_gap_report(bins, scope=scope)
     candidates: list[ExcludeCandidate] = []
 
+    if const is not None:
+        # solve all never-toggled rows together: order-independent results
+        const.prepare_rows([(b.instance, b.signal) for b in report.never_toggled])
+
     for b in report.never_toggled:
-        candidates.append(_classify_never_toggled(b, rtl, params))
+        proven = _classify_constant(b, const) if const is not None else None
+        cand = proven or _classify_never_toggled(b, rtl, params)
+        if (
+            proven is None
+            and const is not None
+            and cand.disposition == UNEXPLAINED_GAP
+            and const.resolve_row(b.instance, b.signal) is not None
+        ):
+            cand.reason += (
+                "; pyslang: not constant in the elaborated design (driven by logic, a register "
+                "or a black box that can change)"
+            )
+        candidates.append(cand)
 
     for b in report.missing_0_to_1:
         candidates.append(
