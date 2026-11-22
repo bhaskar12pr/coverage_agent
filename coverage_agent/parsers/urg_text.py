@@ -1,5 +1,11 @@
 """Parser for VCS urg toggle coverage reports in -format text.
 
+Real urg output (modinfo.txt: "Toggle Coverage for Instance : ..."
+sections) is detected and handed to `urg_modinfo`, which is validated
+against real VCS reports. Everything below is the LEGACY parser for the
+older synthetic sample shape in samples/urg_text/ (one bit per row,
+"Covered"/"Not Covered" columns) — kept so existing samples/tests work.
+
 The exact column layout of urg's text output has drifted across VCS
 versions, so this parser matches on keywords/patterns rather than fixed
 column positions:
@@ -14,6 +20,7 @@ regexes below if signal names or statuses don't match (see README.md).
 import re
 
 from coverage_agent.model import ToggleBin
+from coverage_agent.parsers.urg_modinfo import looks_like_modinfo, parse_urg_modinfo
 
 _INSTANCE_RE = re.compile(
     r"(?:toggle coverage\s+for\s+instance|instance)\s*[:\-]\s*(?P<inst>\S+)",
@@ -54,6 +61,8 @@ def _status_to_bool(token: str) -> bool:
 
 def parse_urg_text(text: str) -> list[ToggleBin]:
     """Parse toggle bins out of a urg -format text report body."""
+    if looks_like_modinfo(text):
+        return parse_urg_modinfo(text).bins
     bins: list[ToggleBin] = []
     current_instance = ""
 

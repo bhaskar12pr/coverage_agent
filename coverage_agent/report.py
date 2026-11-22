@@ -5,7 +5,7 @@ import io
 import json
 from dataclasses import dataclass
 
-from coverage_agent.model import ToggleBin
+from coverage_agent.model import EXCLUDED, UNREACHABLE, ToggleBin
 
 
 @dataclass
@@ -16,12 +16,26 @@ class GapReport:
     never_toggled: list[ToggleBin]
     missing_0_to_1: list[ToggleBin]
     missing_1_to_0: list[ToggleBin]
+    waived: int = 0              # rows excluded by .el or proven Unreachable — not gaps
+    transitions_total: int = 0   # bit-weighted, both directions, waived excluded
+    transitions_covered: int = 0
 
     @property
     def coverage_pct(self) -> float:
         if self.total == 0:
             return 0.0
         return 100.0 * self.fully_covered / self.total
+
+    @property
+    def toggle_pct(self) -> float:
+        """Bit-weighted toggle score, the same number urg reports as TOGGLE."""
+        if self.transitions_total == 0:
+            return 0.0
+        return 100.0 * self.transitions_covered / self.transitions_total
+
+    @property
+    def gap_bits(self) -> int:
+        return self.transitions_total - self.transitions_covered
 
     @property
     def gap_count(self) -> int:
@@ -33,6 +47,18 @@ def build_gap_report(bins: list[ToggleBin], scope: str = "") -> GapReport:
     to a VIP/instance hierarchy prefix (e.g. "tb_top.dut.u_axi_vip")."""
     if scope:
         bins = [b for b in bins if b.full_name.startswith(scope)]
+
+    waived = sum(1 for b in bins if b.waived)
+    transitions_total = transitions_covered = 0
+    for b in bins:
+        for status, hit in ((b.status_0_to_1, b.hit_0_to_1), (b.status_1_to_0, b.hit_1_to_0)):
+            if status in (EXCLUDED, UNREACHABLE):
+                continue
+            transitions_total += b.width
+            transitions_covered += b.width if hit else 0
+    # Drop rows with both directions waived; for a row with only one
+    # direction waived, judge just the other direction.
+    bins = [b.effective() for b in bins if not b.waived]
 
     never_toggled = [b for b in bins if b.never_toggled]
     missing_0_to_1 = [b for b in bins if not b.never_toggled and not b.hit_0_to_1]
@@ -50,6 +76,9 @@ def build_gap_report(bins: list[ToggleBin], scope: str = "") -> GapReport:
         never_toggled=never_toggled,
         missing_0_to_1=missing_0_to_1,
         missing_1_to_0=missing_1_to_0,
+        waived=waived,
+        transitions_total=transitions_total,
+        transitions_covered=transitions_covered,
     )
 
 
@@ -61,6 +90,11 @@ def format_console(report: GapReport, top: int | None = None) -> str:
         f"  {report.fully_covered}/{report.total} bins fully covered "
         f"({report.coverage_pct:.2f}%), {report.gap_count} gap(s)"
     )
+    lines.append(
+        f"  toggle score {report.toggle_pct:.2f}% "
+        f"({report.transitions_covered}/{report.transitions_total} bit transitions, "
+        f"{report.gap_bits} missing); {report.waived} row(s) excluded/unreachable, not counted"
+    )
 
     def _section(title: str, items: list[ToggleBin]) -> None:
         if not items:
@@ -68,7 +102,12 @@ def format_console(report: GapReport, top: int | None = None) -> str:
         shown = items if top is None else items[:top]
         lines.append(f"\n{title} ({len(items)}):")
         for b in shown:
-            lines.append(f"  {b.full_name}")
+            extra = []
+            if b.width > 1:
+                extra.append(f"{b.width} bits")
+            if b.direction:
+                extra.append(b.direction)
+            lines.append(f"  {b.full_name}" + (f"  ({', '.join(extra)})" if extra else ""))
         if top is not None and len(items) > top:
             lines.append(f"  ... and {len(items) - top} more")
 
@@ -92,6 +131,11 @@ def to_json(report: GapReport) -> str:
                 "signal": b.signal,
                 "hit_0_to_1": b.hit_0_to_1,
                 "hit_1_to_0": b.hit_1_to_0,
+                "width": b.width,
+                "direction": b.direction,
+                "module": b.module,
+                "tests_0_to_1": list(b.tests_0_to_1),
+                "tests_1_to_0": list(b.tests_1_to_0),
             }
             for b in items
         ]
@@ -101,6 +145,10 @@ def to_json(report: GapReport) -> str:
         "total": report.total,
         "fully_covered": report.fully_covered,
         "coverage_pct": round(report.coverage_pct, 2),
+        "toggle_pct": round(report.toggle_pct, 2),
+        "transitions_total": report.transitions_total,
+        "transitions_covered": report.transitions_covered,
+        "waived": report.waived,
         "gap_count": report.gap_count,
         "never_toggled": _bins(report.never_toggled),
         "missing_0_to_1": _bins(report.missing_0_to_1),

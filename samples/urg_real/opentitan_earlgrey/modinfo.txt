@@ -1,0 +1,1096 @@
+===============================================================================
+Module Instance : tb.dut.u_padring(x)
+===============================================================================
+
+Instance :
+
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT 
+ 97.38  98.18 --      96.57 --     --     --     
+
+
+Instance's subtree :
+
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT 
+ 99.04  99.21  99.81  96.57 --      99.60 100.00 
+
+
+Module : 
+
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT NAME    
+ 76.20  98.18 --      54.21 --     --     --     padring 
+
+
+Parent : 
+
+-------------------------------------------------------------------------------
+Line Coverage for Instance : tb.dut.u_padring(x)
+
+             Line No.   Total   Covered  Percent
+TOTAL                      110      108    98.18
+CONT_ASSIGN       141        0        0
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        0        0
+CONT_ASSIGN       141        0        0
+CONT_ASSIGN       141        0        0
+CONT_ASSIGN       141        0        0
+CONT_ASSIGN       141        0        0
+CONT_ASSIGN       141        0        0
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        1        0     0.00
+CONT_ASSIGN       141        1        0     0.00
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       141        1        1   100.00
+CONT_ASSIGN       142        0        0
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        0        0
+CONT_ASSIGN       142        0        0
+CONT_ASSIGN       142        0        0
+CONT_ASSIGN       142        0        0
+CONT_ASSIGN       142        0        0
+CONT_ASSIGN       142        0        0
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       142        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       248        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+CONT_ASSIGN       249        1        1   100.00
+
+140                           // Directly connect output signals to pad.
+141        10/12(7 unreachable)  ==>        assign dio_out = dio_out_i[k];
+           Tests:       T7 T8 T9  | T7 T8 T9  | T10 T11 T12  | T11 T12 T13  | T10 T11 T12  | T10 T11 T12  | T6 T11 T12  | T6 T14 T11  | T15 T16 T17  | T15 T18 T16 
+142        12/12(7 unreachable)        assign dio_oe  = dio_oe_i[k];
+           Tests:       T9 T19 T20  | T9 T19 T20  | T10 T11 T12  | T21 T22 T23  | T10 T11 T12  | T10 T11 T12  | T6 T11 T13  | T6 T14 T11  | T22 T23 T24  | T22 T23 T24  | T5 T25 T26  | T5 T25 T26 
+143                         end
+144                     
+145                         prim_pad_wrapper #(
+146                           .PadType  ( DioPadType[k]  ),
+147                           .ScanRole ( DioScanRole[k] )
+148                         ) u_dio_pad (
+149                           .clk_scan_i,
+150                           .scanmode_i ( scanmode                 ),
+151                           .pok_i      ( pad_pok[DioPadBank[k]]   ),
+152                           .inout_io   ( dio_pad_io[k]            ),
+153                           .in_o       ( dio_in_o[k]              ),
+154                           .in_raw_o   ( dio_in_raw_o[k]          ),
+155                           // This is currently not dynamically controlled.
+156                           // However, this may change in the future if the
+157                           // need arises (e.g. as part of to power sequencing).
+158                           // Orthogonal to this pin, the input can be disabled
+159                           // by setting `attr_i.input_disable` to 1.
+160                           .ie_i       ( 1'b1                     ),
+161                           .out_i      ( dio_out                  ),
+162                           .oe_i       ( dio_oe                   ),
+163                           .attr_i     ( dio_attr_i[k]            )
+164                         );
+165                       end
+166                     
+167                       for (genvar k = 0; k < NMioPads; k++) begin : gen_mio_pads
+168                         logic mio_in, mio_in_raw;
+169                     
+170                         if (k == top_earlgrey_pkg::MioPadIob0) begin : gen_mux_iob0
+171                           // Connect input coming from pad SPI_HOST_D2 to signals of muxed pad IOB0.
+172                           prim_clock_mux2 #(
+173                             .NoFpgaBufG(1'b1)
+174                           ) u_mux_mio_in (
+175                             .clk0_i (mio_in),
+176                             .clk1_i (dio_in_o[top_earlgrey_pkg::DioPadSpiHostD2]),
+177                             .sel_i  (mux_iob_sel_i[0]),
+178                             .clk_o  (mio_in_o[k])
+179                           );
+180                           prim_clock_mux2 #(
+181                             .NoFpgaBufG(1'b1)
+182                           ) u_mux_mio_in_raw (
+183                             .clk0_i (mio_in_raw),
+184                             .clk1_i (dio_in_raw_o[top_earlgrey_pkg::DioPadSpiHostD2]),
+185                             .sel_i  (mux_iob_sel_i[0]),
+186                             .clk_o  (mio_in_raw_o[k])
+187                           );
+188                     
+189                         end else if (k == top_earlgrey_pkg::MioPadIob1) begin : gen_mux_iob1
+190                           // Connect input coming from pad SPI_HOST_D3 to signals of muxed pad IOB1.
+191                           prim_clock_mux2 #(
+192                             .NoFpgaBufG(1'b1)
+193                           ) u_mux_mio_in (
+194                             .clk0_i (mio_in),
+195                             .clk1_i (dio_in_o[top_earlgrey_pkg::DioPadSpiHostD3]),
+196                             .sel_i  (mux_iob_sel_i[1]),
+197                             .clk_o  (mio_in_o[k])
+198                           );
+199                           prim_clock_mux2 #(
+200                             .NoFpgaBufG(1'b1)
+201                           ) u_mux_mio_in_raw (
+202                             .clk0_i (mio_in_raw),
+203                             .clk1_i (dio_in_raw_o[top_earlgrey_pkg::DioPadSpiHostD3]),
+204                             .sel_i  (mux_iob_sel_i[1]),
+205                             .clk_o  (mio_in_raw_o[k])
+206                           );
+207                     
+208                         end else if (k == top_earlgrey_pkg::MioPadIob2) begin : gen_mux_iob2
+209                           // Connect input coming from pad SPI_DEV_D2 to signals of muxed pad IOB2.
+210                           prim_clock_mux2 #(
+211                             .NoFpgaBufG(1'b1)
+212                           ) u_mux_mio_in (
+213                             .clk0_i (mio_in),
+214                             .clk1_i (dio_in_o[top_earlgrey_pkg::DioPadSpiDevD2]),
+215                             .sel_i  (mux_iob_sel_i[2]),
+216                             .clk_o  (mio_in_o[k])
+217                           );
+218                           prim_clock_mux2 #(
+219                             .NoFpgaBufG(1'b1)
+220                           ) u_mux_mio_in_raw (
+221                             .clk0_i (mio_in_raw),
+222                             .clk1_i (dio_in_raw_o[top_earlgrey_pkg::DioPadSpiDevD2]),
+223                             .sel_i  (mux_iob_sel_i[2]),
+224                             .clk_o  (mio_in_raw_o[k])
+225                           );
+226                     
+227                         end else if (k == top_earlgrey_pkg::MioPadIob3) begin : gen_mux_iob3
+228                           // Connect input coming from pad SPI_DEV_D3 to signals of muxed pad IOB3.
+229                           prim_clock_mux2 #(
+230                             .NoFpgaBufG(1'b1)
+231                           ) u_mux_mio_in (
+232                             .clk0_i (mio_in),
+233                             .clk1_i (dio_in_o[top_earlgrey_pkg::DioPadSpiDevD3]),
+234                             .sel_i  (mux_iob_sel_i[3]),
+235                             .clk_o  (mio_in_o[k])
+236                           );
+237                           prim_clock_mux2 #(
+238                             .NoFpgaBufG(1'b1)
+239                           ) u_mux_mio_in_raw (
+240                             .clk0_i (mio_in_raw),
+241                             .clk1_i (dio_in_raw_o[top_earlgrey_pkg::DioPadSpiDevD3]),
+242                             .sel_i  (mux_iob_sel_i[3]),
+243                             .clk_o  (mio_in_raw_o[k])
+244                           );
+245                     
+246                         end else begin : gen_no_mux
+247                           // Directly connect input signals to pad.
+248        43/43              assign mio_in_o[k]     = mio_in;
+           Tests:       T10 T27 T28  | T27 T28 T29  | T27 T28 T30  | T27 T28 T30  | T27 T31 T28  | T27 T31 T28  | T27 T28 T30  | T6 T14 T27  | T6 T27 T28  | T6 T10 T32  | T1 T2 T3  | T10 T28 T33  | T28 T15 T18  | T28 T33 T15  | T2 T28 T34  | T2 T28 T34  | T2 T28 T35  | T2 T28 T35  | T1 T2 T3  | T1 T2 T3  | T1 T2 T3  | T1 T2 T3  | T1 T2 T3  | T1 T2 T3  | T5 T36 T37  | T38 T39 T7  | T40 T41 T42  | T28 T33 T15  | T28 T43 T30  | T28 T43 T30  | T28 T43 T30  | T44 T28 T36  | T44 T28 T36  | T44 T28 T36  | T44 T28 T36  | T44 T28 T36  | T1 T2 T3  | T28 T15 T30  | T1 T2 T3  | T28 T30 T45  | T28 T30 T45  | T28 T30 T45  | T28 T33 T15 
+249        43/43              assign mio_in_raw_o[k] = mio_in_raw;
+           Tests:       T10 T27 T28  | T27 T28 T29  | T27 T28 T30  | T27 T28 T30  | T27 T31 T28  | T27 T31 T28  | T27 T28 T30  | T6 T14 T27  | T6 T27 T28  | T6 T10 T32  | T1 T2 T3  | T10 T28 T33  | T28 T15 T18  | T28 T33 T15  | T2 T28 T34  | T2 T28 T34  | T2 T28 T35  | T2 T28 T35  | T1 T2 T3  | T1 T2 T3  | T1 T2 T3  | T1 T2 T3  | T1 T2 T3  | T1 T2 T3  | T5 T36 T37  | T38 T39 T7  | T40 T41 T42  | T28 T33 T15  | T28 T43 T30  | T28 T43 T30  | T28 T43 T30  | T44 T28 T36  | T44 T28 T36  | T44 T28 T36  | T44 T28 T36  | T44 T28 T36  | T1 T2 T3  | T28 T15 T30  | T1 T2 T3  | T28 T30 T45  | T28 T30 T45  | T28 T30 T45  | T28 T33 T15 
+
+-------------------------------------------------------------------------------
+Toggle Coverage for Instance : tb.dut.u_padring(x)
+                Total Covered Percent 
+Totals          399   385     96.49   
+Total Bits      1458  1408    96.57   
+Total Bits 0->1 729   713     97.81   
+Total Bits 1->0 729   695     95.34   
+
+                                
+Ports          399  385  96.49  
+Port Bits      1458 1408 96.57  
+Port Bits 0->1 729  713  97.81  
+Port Bits 1->0 729  695  95.34  
+
+Port Details
+                                   Toggle      Toggle 1->0 Tests          Toggle 0->1 Tests       Direction Exclude Annotation 
+clk_scan_i                         Yes         Yes         T1,T2,T3       Yes         T1,T2,T3    INPUT     
+scanmode_i[3:0]                    Unreachable Unreachable                Unreachable             INPUT     
+mux_iob_sel_i[3:0]                 Unreachable Unreachable                Unreachable             INPUT     
+dio_in_raw_o[2:0]                  Yes         Yes         *T46,*T47,*T48 Yes         T1,T2,T3    OUTPUT    
+dio_in_raw_o[8:3]                  No          No                         Yes         T21,T49,T22 OUTPUT    
+dio_in_raw_o[22:9]                 Yes         Yes         T10,T11,T12    Yes         T10,T11,T12 OUTPUT    
+mio_in_raw_o[46:0]                 Yes         Yes         T27,T28,T29    Yes         T27,T28,T29 OUTPUT    
+dio_pad_io[2:0]                    Yes         Yes         *T46,*T47,*T48 Yes         T1,T2,T3    INOUT     
+dio_pad_io[8:3]                    No          No                         Yes         T21,T49,T22 INOUT     
+dio_pad_io[22:9]                   Yes         Yes         T10,T11,T12    Yes         T10,T11,T12 INOUT     
+mio_pad_io[46:0]                   Yes         Yes         T27,T28,T29    Yes         T27,T28,T29 INOUT     
+dio_in_o[2:0]                      Yes         Yes         *T46,*T47,*T48 Yes         T1,T2,T3    OUTPUT    
+dio_in_o[8:3]                      No          No                         Yes         T21,T49,T22 OUTPUT    
+dio_in_o[22:9]                     Yes         Yes         T10,T11,T12    Yes         T10,T11,T12 OUTPUT    
+dio_out_i[0]                       Unreachable Unreachable                Unreachable             INPUT     
+dio_out_i[2:1]                     Yes         Yes         *T7,*T8,T9     Yes         T9,T19,T20  INPUT     
+dio_out_i[8:3]                     Unreachable Unreachable                Unreachable             INPUT     
+dio_out_i[18:9]                    Yes         Yes         *T10,T11,*T12  Yes         T10,T11,T12 INPUT     
+dio_out_i[20:19]                   No          No                         No                      INPUT     
+dio_out_i[22:21]                   Yes         Yes         T15,T16,T17    Yes         T15,T16,T17 INPUT     
+dio_oe_i[0]                        Unreachable Unreachable                Unreachable             INPUT     
+dio_oe_i[2:1]                      Yes         Yes         T9,T19,T20     Yes         T9,T19,T20  INPUT     
+dio_oe_i[8:3]                      Unreachable Unreachable                Unreachable             INPUT     
+dio_oe_i[22:9]                     Yes         Yes         T10,T11,T12    Yes         T10,T11,T12 INPUT     
+mio_in_o[46:0]                     Yes         Yes         T27,T28,T29    Yes         T27,T28,T29 OUTPUT    
+mio_out_i[46:0]                    Yes         Yes         T27,T28,T50    Yes         T27,T28,T50 INPUT     
+mio_oe_i[46:0]                     Yes         Yes         T28,T51,T52    Yes         T27,T28,T50 INPUT     
+dio_attr_i[0].invert[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[0].virt_od_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[0].pull_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[0].pull_select[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[0].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[0].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[0].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[0].input_disable        No          No                         No                      INPUT     
+dio_attr_i[0].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[0].drive_strength[3:0]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[1].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[1].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[1].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[1].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[1].keep_en              No          No                         No                      INPUT     
+dio_attr_i[1].schmitt_en           No          No                         No                      INPUT     
+dio_attr_i[1].od_en                No          No                         No                      INPUT     
+dio_attr_i[1].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[1].slew_rate[1:0]       No          No                         No                      INPUT     
+dio_attr_i[1].drive_strength[0]    Yes         Yes         *T46,*T53,*T47 Yes         T1,T2,T3    INPUT     
+dio_attr_i[1].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[2].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[2].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[2].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[2].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[2].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[2].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[2].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[2].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[2].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[2].drive_strength[0]    Yes         Yes         *T46,*T53,*T47 Yes         T1,T2,T3    INPUT     
+dio_attr_i[2].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].invert[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].virt_od_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].pull_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].pull_select[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[3].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[3].drive_strength[3:0]  No          No                         No                      INPUT     
+dio_attr_i[4].invert[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[4].virt_od_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[4].pull_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[4].pull_select[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[4].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[4].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[4].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[4].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[4].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[4].drive_strength[3:0]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].invert[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].virt_od_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].pull_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].pull_select[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].input_disable        No          No                         No                      INPUT     
+dio_attr_i[5].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[5].drive_strength[3:0]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].invert[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].virt_od_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].pull_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].pull_select[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[6].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[6].drive_strength[3:0]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].invert[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].virt_od_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].pull_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].pull_select[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[7].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[7].drive_strength[3:0]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].invert[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].virt_od_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].pull_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].pull_select[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].input_disable        No          No                         No                      INPUT     
+dio_attr_i[8].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[8].drive_strength[3:0]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[9].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[9].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[9].pull_en              Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[9].pull_select          Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[9].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[9].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[9].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[9].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[9].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[9].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T10,T11,T12 INPUT     
+dio_attr_i[9].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[10].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[10].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[10].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[10].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[10].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[10].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[10].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[10].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[10].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[10].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T11,T12 INPUT     
+dio_attr_i[10].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[11].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[11].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[11].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[11].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[11].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[11].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[11].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[11].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[11].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[11].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T11,T12 INPUT     
+dio_attr_i[11].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[12].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[12].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[12].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[12].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[12].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[12].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[12].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[12].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[12].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[12].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T11,T12 INPUT     
+dio_attr_i[12].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[13].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[13].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[13].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[13].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[13].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[13].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[13].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[13].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[13].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[13].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T11,T12 INPUT     
+dio_attr_i[13].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[14].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[14].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[14].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[14].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+dio_attr_i[14].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[14].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[14].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[14].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[14].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[14].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T11,T12 INPUT     
+dio_attr_i[14].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[15].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[15].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[15].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[15].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[15].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[15].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[15].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[15].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[15].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[15].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T14,T11,T12 INPUT     
+dio_attr_i[15].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[16].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[16].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[16].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[16].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[16].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[16].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[16].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[16].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[16].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[16].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T14,T11,T12 INPUT     
+dio_attr_i[16].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[17].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[17].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[17].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[17].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[17].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[17].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[17].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[17].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[17].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[17].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T14,T11,T12 INPUT     
+dio_attr_i[17].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[18].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[18].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[18].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[18].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[18].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[18].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[18].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[18].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[18].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[18].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T14,T11,T12 INPUT     
+dio_attr_i[18].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[19].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[19].virt_od_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[19].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[19].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[19].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[19].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[19].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[19].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[19].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[19].drive_strength[0]   No          No                         No                      INPUT     
+dio_attr_i[19].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[20].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[20].virt_od_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[20].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[20].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[20].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[20].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[20].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[20].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[20].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[20].drive_strength[0]   No          No                         No                      INPUT     
+dio_attr_i[20].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[21].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[21].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T18,T54,T55 INPUT     
+dio_attr_i[21].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[21].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[21].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[21].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[21].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[21].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[21].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[21].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+dio_attr_i[21].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[22].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[22].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T18,T54,T55 INPUT     
+dio_attr_i[22].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[22].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[22].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[22].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[22].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[22].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+dio_attr_i[22].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+dio_attr_i[22].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+dio_attr_i[22].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[0].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[0].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[0].pull_en              Yes         Yes         T22,T23,T24    Yes         T10,T56,T57 INPUT     
+mio_attr_i[0].pull_select          Yes         Yes         T22,T23,T24    Yes         T10,T56,T57 INPUT     
+mio_attr_i[0].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[0].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[0].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[0].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[0].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[0].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T10,T56,T57 INPUT     
+mio_attr_i[0].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[1].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[1].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[1].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[1].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[1].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[1].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[1].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[1].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[1].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[1].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[1].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[2].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[2].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[2].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[2].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[2].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[2].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[2].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[2].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[2].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[2].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[2].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[3].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[3].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[3].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[3].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[3].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[3].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[3].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[3].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[3].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[3].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[3].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[4].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[4].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[4].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[4].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[4].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[4].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[4].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[4].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[4].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[4].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[4].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[5].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[5].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[5].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[5].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[5].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[5].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[5].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[5].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[5].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[5].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[5].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[6].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[6].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[6].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[6].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[6].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[6].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[6].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[6].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[6].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[6].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[6].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[7].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[7].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[7].pull_en              Yes         Yes         T22,T23,T24    Yes         T14,T58,T59 INPUT     
+mio_attr_i[7].pull_select          Yes         Yes         T22,T23,T24    Yes         T14,T58,T59 INPUT     
+mio_attr_i[7].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[7].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[7].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[7].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[7].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[7].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[7].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[8].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[8].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[8].pull_en              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[8].pull_select          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[8].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[8].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[8].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[8].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[8].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[8].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[8].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[9].invert               Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[9].virt_od_en           Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[9].pull_en              Yes         Yes         T22,T23,T24    Yes         T10,T56,T57 INPUT     
+mio_attr_i[9].pull_select          Yes         Yes         T22,T23,T24    Yes         T10,T56,T57 INPUT     
+mio_attr_i[9].keep_en[0:0]         Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[9].schmitt_en[0:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[9].od_en[0:0]           Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[9].input_disable        Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[9].slew_rate[1:0]       Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[9].drive_strength[0]    Yes         Yes         *T22,*T23,*T24 Yes         T10,T56,T57 INPUT     
+mio_attr_i[9].drive_strength[3:1]  Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[10].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[10].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[10].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+mio_attr_i[10].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+mio_attr_i[10].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[10].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[10].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[10].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[10].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[10].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T56,T57 INPUT     
+mio_attr_i[10].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[11].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[11].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[11].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[11].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[11].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[11].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[11].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[11].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[11].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[11].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[11].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[12].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[12].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[12].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+mio_attr_i[12].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T11,T12 INPUT     
+mio_attr_i[12].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[12].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[12].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[12].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[12].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[12].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T56,T57 INPUT     
+mio_attr_i[12].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[13].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[13].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[13].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T13,T56 INPUT     
+mio_attr_i[13].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T13,T56 INPUT     
+mio_attr_i[13].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[13].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[13].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[13].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[13].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[13].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T56,T57 INPUT     
+mio_attr_i[13].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[14].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[14].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[14].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T13,T56 INPUT     
+mio_attr_i[14].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T13,T56 INPUT     
+mio_attr_i[14].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[14].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[14].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[14].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[14].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[14].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T56,T57 INPUT     
+mio_attr_i[14].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[15].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[15].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[15].pull_en             Yes         Yes         T22,T23,T24    Yes         T10,T13,T56 INPUT     
+mio_attr_i[15].pull_select         Yes         Yes         T22,T23,T24    Yes         T10,T13,T56 INPUT     
+mio_attr_i[15].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[15].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[15].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[15].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[15].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[15].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T10,T56,T57 INPUT     
+mio_attr_i[15].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[16].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[16].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[16].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[16].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[16].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[16].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[16].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[16].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[16].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[16].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[16].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[17].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[17].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[17].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[17].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[17].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[17].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[17].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[17].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[17].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[17].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[17].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[18].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[18].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[18].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[18].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[18].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[18].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[18].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[18].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[18].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[18].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[18].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[19].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[19].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[19].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[19].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[19].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[19].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[19].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[19].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[19].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[19].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[19].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[20].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[20].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[20].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[20].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[20].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[20].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[20].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[20].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[20].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[20].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[20].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[21].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[21].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[21].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[21].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[21].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[21].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[21].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[21].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[21].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[21].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[21].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[22].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[22].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[22].pull_en             Yes         Yes         T60,T61,T62    Yes         T63,T64,T65 INPUT     
+mio_attr_i[22].pull_select         Yes         Yes         T63,T64,T65    Yes         T63,T64,T65 INPUT     
+mio_attr_i[22].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[22].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[22].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[22].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[22].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[22].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[22].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[23].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[23].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[23].pull_en             Yes         Yes         T60,T61,T62    Yes         T63,T64,T65 INPUT     
+mio_attr_i[23].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[23].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[23].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[23].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[23].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[23].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[23].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[23].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[24].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[24].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[24].pull_en             Yes         Yes         T60,T61,T62    Yes         T63,T64,T65 INPUT     
+mio_attr_i[24].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[24].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[24].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[24].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[24].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[24].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[24].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[24].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[25].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[25].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[25].pull_en             Yes         Yes         T5,T46,T53     Yes         T1,T2,T3    INPUT     
+mio_attr_i[25].pull_select         Yes         Yes         T5,T46,T53     Yes         T1,T2,T3    INPUT     
+mio_attr_i[25].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[25].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[25].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[25].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[25].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[25].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[25].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[26].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[26].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[26].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[26].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[26].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[26].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[26].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[26].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[26].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[26].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[26].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[27].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[27].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[27].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[27].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[27].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[27].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[27].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[27].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[27].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[27].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[27].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[28].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[28].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[28].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[28].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[28].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[28].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[28].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[28].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[28].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[28].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[28].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[29].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[29].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[29].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[29].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[29].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[29].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[29].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[29].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[29].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[29].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[29].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[30].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[30].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[30].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[30].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[30].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[30].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[30].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[30].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[30].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[30].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[30].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[31].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[31].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[31].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[31].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[31].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[31].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[31].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[31].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[31].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[31].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[31].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[32].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[32].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[32].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[32].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[32].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[32].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[32].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[32].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[32].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[32].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[32].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[33].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[33].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[33].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[33].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[33].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[33].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[33].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[33].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[33].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[33].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[33].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[34].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[34].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[34].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[34].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[34].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[34].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[34].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[34].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[34].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[34].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[34].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[35].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[35].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[35].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[35].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[35].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[35].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[35].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[35].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[35].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[35].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[35].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[36].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[36].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[36].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[36].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[36].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[36].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[36].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[36].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[36].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[36].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[36].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[37].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[37].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[37].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[37].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[37].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[37].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[37].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[37].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[37].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[37].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[37].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[38].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[38].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[38].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[38].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[38].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[38].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[38].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[38].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[38].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[38].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[38].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[39].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[39].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[39].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[39].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[39].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[39].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[39].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[39].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[39].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[39].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[39].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[40].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[40].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[40].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[40].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[40].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[40].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[40].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[40].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[40].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[40].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[40].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[41].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[41].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[41].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[41].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[41].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[41].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[41].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[41].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[41].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[41].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[41].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[42].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[42].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[42].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[42].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[42].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[42].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[42].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[42].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[42].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[42].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[42].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[43].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[43].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[43].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[43].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[43].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[43].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[43].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[43].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[43].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[43].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[43].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[44].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[44].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[44].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[44].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[44].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[44].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[44].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[44].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[44].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[44].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[44].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[45].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[45].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[45].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[45].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[45].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[45].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[45].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[45].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[45].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[45].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[45].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[46].invert              Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[46].virt_od_en          Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[46].pull_en             Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[46].pull_select         Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[46].keep_en[0:0]        Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[46].schmitt_en[0:0]     Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[46].od_en[0:0]          Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[46].input_disable       Yes         Yes         T22,T23,T24    Yes         T22,T23,T24 INPUT     
+mio_attr_i[46].slew_rate[1:0]      Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+mio_attr_i[46].drive_strength[0]   Yes         Yes         *T22,*T23,*T24 Yes         T22,T23,T24 INPUT     
+mio_attr_i[46].drive_strength[3:1] Excluded    Excluded                   Excluded                INPUT     [UNR] Tie offs.    
+
+*Tests covering at least one bit in the range
+
+===============================================================================
+Module : pinmux
+===============================================================================
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT 
+ 77.09  79.49  76.99  66.69 --      70.31  92.00 
+
+Source File(s) : 
+
+/workspaces/repo/scratch/os_regression/chip_earlgrey_asic-sim-vcs/default/sim-vcs/../src/lowrisc_ip_pinmux_component_0.1/rtl/pinmux.sv
+
+Module self-instances :
+
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT NAME                                
+ 87.41  98.93  76.99  98.84 --      70.31  92.00 tb.dut.top_earlgrey.u_pinmux_aon(x) 
+
+
+
+-------------------------------------------------------------------------------

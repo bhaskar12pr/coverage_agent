@@ -30,22 +30,37 @@ report output:
 Stdlib-only (no pip installs needed) so it runs in locked-down DV
 environments.
 
-## Status: format not yet validated against a real VCS report
+## Status: validated against real VCS reports
 
-This was built without access to a VCS installation, from documented
-`urg` conventions (columns `Name` / `Toggle 0->1` / `Toggle 1->0`,
-status `Covered`/`Not Covered` or `Yes`/`No`, generated via
-`urg -dir simv.vdb -format text|html -metric tgl`). The parsers in
-`coverage_agent/parsers/` match on these keywords/patterns rather than
-fixed column positions, so minor formatting differences should still
-parse — but **run it against a real report from your VCS version
-before trusting the output**. If it parses 0 bins (you'll get a
-warning on stderr) or misses signals, see Troubleshooting below.
+The text parser reads real `urg` output — `modinfo.txt` from
+`urg ... -format text` (or `-format both`) — and has been validated
+against real VCS T-2022.06 reports published by OpenTitan: the `rv_dm`
+and `gpio` IP regressions and the full `top_earlgrey` chip regression.
+For every one of the 96 toggle sections, the parsed bits equal urg's own
+per-section totals in both directions, and the computed toggle score
+equals the urg dashboard (89.91% / 100% / 95.36%). Excerpts and
+provenance: `samples/urg_real/` (`ATTRIBUTION.md`); tests:
+`tests/test_urg_modinfo.py`, `tests/test_el_parser.py`.
+
+Real-format rows are bit ranges (`data_i[56:6]`), struct fields
+(`alert_rx_i[0].ping_n`), per-direction status `Yes`/`No`/`Unreachable`/
+`Excluded`, the tests that hit each direction, port direction, and the
+exclusion annotation. `Excluded` and `Unreachable` rows are not counted
+as gaps. Point the tool at a `urgReport/` directory and it reads only
+`modinfo.txt`.
+
+SoC-level tie-off proofs on the elaborated design: see "Proving SoC
+tie-offs" below (`--slang`, optional pyslang).
+
+Still unverified: the **HTML** parser and the `gen-excludes` **writer**
+(see "Exclusion file format" below). Roadmap for SoC-level use,
+derivatives and the coverage-closure loop: `docs/SOC_TOGGLE_PLAN.md`.
 
 ## Generate a urg toggle report (VCS)
 
 ```sh
-urg -dir simv.vdb -format text -metric tgl -hier <hier_file>   # or -format html
+urg -dir simv.vdb -format text -metric tgl -hier <hier_file>   # writes urgReport/modinfo.txt
+# add -show tests to get the per-direction "Tests" columns, -elfile <x.el> to apply exclusions
 ```
 
 `-hier` scopes the report to your VIP's instance if you don't want the
@@ -316,14 +331,80 @@ all five came back correctly classified. Also verified the same signal
 under `deriv_lowpower`, mirroring the derivative-awareness guarantee
 from `suggest-excludes`. See `tests/test_verify_excludes.py`.
 
-### Exclusion file format: unverified, same caveat as the toggle parser
+### Exclusion file formats
 
-`gen-excludes` emits a documented-but-unverified VCS/UCM-style
-exclusion syntax (`INSTANCE:` + `Exclude Toggle "sig" -detail "01"
--comment "..."`). You said you'd provide a real exclusion file to
-match against — once you do, update `coverage_agent/exclude/formatter.py`
-accordingly. Don't load the generated `.el` into a real coverage merge
-until you've confirmed the syntax.
+**Reading — validated.** `verify-excludes` reads real VCS `.el` files
+(`CHECKSUM:` / `INSTANCE:` or `MODULE:` / `ANNOTATION:` / `Toggle sig
+"decl"`, including single-bit `Toggle sig [39] "..."` entries), plus the
+legacy shape below. All 1,122 Excluded rows in the real Earlgrey report
+trace back to OpenTitan's 12 real `.el` files. `-node` exclusions from a
+`-cm_hier` config are parsed by `parse_cov_cfg_nodes()` (not yet wired
+into the CLI). Stale entries — a signal the report doesn't have — come
+back as `unknown_signal`; on the real Earlgrey data that finds
+`ram_2p_cfg_i.*` (port renamed) and `dio_attr_i[23].*` (pad removed).
+
+**Writing — still unverified.** `gen-excludes` emits the older guessed
+syntax (`INSTANCE:` + `Exclude Toggle "sig" -detail "01" -comment
+"..."`), not the real `.el` format. Switching it is the next step; the
+open question is the per-scope `CHECKSUM:` VCS writes, which this tool
+can't compute. Don't load a generated file into a real coverage merge
+until that's confirmed.
+
+## Proving SoC tie-offs on the elaborated design (`--slang`, optional)
+
+The regex scanner only sees a tie-off written inside the IP's own file.
+At SoC level most dead bits are constants that travel through the
+hierarchy and through logic. On OpenTitan Earlgrey, for example, a pad's
+`keep_en` is 0 because:
+
+```
+prim_pad_attr        always_comb attr_warl_o = '0; attr_warl_o.invert = 1; ...   (PadType param)
+pinmux               assign dio_attr[k] = dio_pad_attr_q[k] & warl_mask;          (register & mask)
+  -> pinmux.dio_attr_o -> top_earlgrey.dio_attr_o -> chip.dio_attr
+chip_earlgrey_asic   .dio_attr_i({dio_attr[DioSpiDeviceCsb], ..., manual_attr_por_n})
+```
+
+`--slang` elaborates the design with [pyslang](https://github.com/MikePopoloski/slang)
+and propagates constants bit by bit through continuous assigns,
+`always_comb`, port connections, struct fields, arrays, concatenations,
+assignment patterns and constant `if`/`case`. A never-toggled row whose
+bits are all constant becomes a `suggested_exclude` with the value and
+the driver chain as its reason; it still needs `"approved": true`.
+
+```sh
+pip install pyslang
+python3 -m coverage_agent suggest-excludes urgReport/modinfo.txt --config cfg.json \
+    --slang "-f sim.f --top chip_top" --hier-map tb.dut=chip_top --out candidates.json
+python3 -m coverage_agent verify-excludes my.el --report urgReport/modinfo.txt --config cfg.json \
+    --slang "-f sim.f --top chip_top" --hier-map tb.dut=chip_top [--slang-check]
+```
+
+- `--slang` takes a slang command line. VCS-style `-f` files with
+  `+incdir+` / `+define+` work. Use the **same file list and defines
+  the simulation was built with**, including generated files (e.g.
+  OpenTitan's FuseSoC "primgen" wrappers such as `prim_pad_attr`).
+  `--single-unit` is needed for code that relies on macros defined in
+  another file (OpenTitan's `` `ASSERT ``).
+- `--hier-map` maps the report's testbench prefix (`tb.dut`) to the
+  elaborated top (`chip_top`).
+- **Sound by construction:** anything not understood is *unknown*, never
+  constant: flops, black boxes (unknown modules, modules with compile
+  errors), loops, function calls, arithmetic on unknown bits,
+  non-constant indices, inout ports, interfaces, conflicting drivers and
+  combinational cycles. It can only under-prove.
+- **What a proof means:** the RTL cannot toggle the bit. It says nothing
+  about a testbench that `force`s or deposits it. `--slang-check` lists
+  rows that toggled although the RTL holds them constant; on Earlgrey
+  all 85 were testbench forces on TL-UL / JTAG ports. A long list there
+  usually means the file list or defines don't match the simulated
+  build.
+
+Results on the real Earlgrey chip (report and RTL from Jan/Feb 2025;
+see `docs/SOC_TOGGLE_PLAN.md`): 29,054 instances elaborated in about
+10 s. For the padring's 510 existing exclusions, `verify-excludes
+--slang` confirms 491, flags 10 that the RTL does not support, and
+reports 9 as stale. It also found 10 never-toggled padring bits that
+are constant but were not excluded.
 
 ## Sample IP used for exclude-gen development (`soc_sample/`)
 

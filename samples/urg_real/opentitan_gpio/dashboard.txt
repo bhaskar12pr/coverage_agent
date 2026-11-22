@@ -1,0 +1,33 @@
+Dashboard
+
+Date: Sun Feb  9 07:11:10 2025
+
+User: miguelosorio
+
+Version: T-2022.06-SP2
+Command line: urg -lca -full64 +urg+lic+wait -show tests -grade index testfile -group ratio -group lrm_bin_name -group instcov_for_score -dir /workspaces/repo/scratch/os_regression/gpio-sim-vcs/cov_merge/merged.vdb -line nocasedef -format both -elfile /workspaces/repo/hw/ip/gpio/dv/cov/gpio_cov_excl.el -report /workspaces/repo/scratch/os_regression/gpio-sim-vcs/cov_report
+Number of tests: 939
+
+-------------------------------------------------------------------------------
+Total Coverage Summary 
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT GROUP  
+ 99.63  99.06  99.24 100.00 --      99.80  99.68  99.99 
+
+
+-------------------------------------------------------------------------------
+Hierarchical coverage data for top-level instances 
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT NAME  
+ 99.56  99.06  99.24 100.00 --      99.80  99.68 tb(X) 
+
+
+-------------------------------------------------------------------------------
+Total Module Definition Coverage Summary 
+SCORE  LINE   COND   TOGGLE FSM    BRANCH ASSERT 
+ 99.48  99.04  98.70 100.00 --     100.00  99.68 
+
+
+-------------------------------------------------------------------------------
+Total Groups Coverage Summary 
+COVERED EXPECTED SCORE  COVERED EXPECTED INST SCORE WEIGHT 
+7015    7016      99.99 7015    7016      99.99     1      
+

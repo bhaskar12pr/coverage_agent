@@ -1,0 +1,57 @@
+Toggle Coverage for Module : gpio
+                Total Covered Percent 
+Totals          30    30      100.00  
+Total Bits      588   588     100.00  
+Total Bits 0->1 294   294     100.00  
+Total Bits 1->0 294   294     100.00  
+
+                              
+Ports          30  30  100.00 
+Port Bits      588 588 100.00 
+Port Bits 0->1 294 294 100.00 
+Port Bits 1->0 294 294 100.00 
+
+Port Details
+                            Toggle      Toggle 1->0 Tests          Toggle 0->1 Tests       Direction 
+clk_i                       Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+rst_ni                      Yes         Yes         T46,T62,T64    Yes         T41,T42,T43 INPUT     
+tl_i.d_ready                Yes         Yes         T41,T46,T47    Yes         T41,T42,T43 INPUT     
+tl_i.a_user.data_intg[6:0]  Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+tl_i.a_user.cmd_intg[6:0]   Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+tl_i.a_user.instr_type[3:0] Yes         Yes         T47,T49,T59    Yes         T47,T49,T59 INPUT     
+tl_i.a_user.rsvd[4:0]       Unreachable Unreachable                Unreachable             INPUT     
+tl_i.a_data[31:0]           Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+tl_i.a_mask[3:0]            Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+tl_i.a_address[31:0]        Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+tl_i.a_source[7:0]          Yes         Yes         T46,T47,T48    Yes         T46,T47,T48 INPUT     
+tl_i.a_size[1:0]            Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+tl_i.a_param[2:0]           Unreachable Unreachable                Unreachable             INPUT     
+tl_i.a_opcode[2:0]          Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+tl_i.a_valid                Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+tl_o.a_ready                Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 OUTPUT    
+tl_o.d_error                Yes         Yes         T53,T54,T55    Yes         T53,T54,T55 OUTPUT    
+tl_o.d_user.data_intg[6:0]  Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 OUTPUT    
+tl_o.d_user.rsp_intg[5:0]   Yes         Yes         *T41,*T42,*T43 Yes         T41,T42,T43 OUTPUT    
+tl_o.d_user.rsp_intg[6]     Unreachable Unreachable                Unreachable             OUTPUT    
+tl_o.d_data[31:0]           Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 OUTPUT    
+tl_o.d_sink                 Unreachable Unreachable                Unreachable             OUTPUT    
+tl_o.d_source[7:0]          Yes         Yes         T46,T48,T49    Yes         T42,T43,T45 OUTPUT    
+tl_o.d_size[1:0]            Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 OUTPUT    
+tl_o.d_param[2:0]           Unreachable Unreachable                Unreachable             OUTPUT    
+tl_o.d_opcode[0]            Yes         Yes         *T41,*T42,*T43 Yes         T41,T42,T43 OUTPUT    
+tl_o.d_opcode[2:1]          Unreachable Unreachable                Unreachable             OUTPUT    
+tl_o.d_valid                Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 OUTPUT    
+intr_gpio_o[31:0]           Yes         Yes         T46,T47,T48    Yes         T46,T47,T48 OUTPUT    
+alert_rx_i[0].ack_n         Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+alert_rx_i[0].ack_p         Yes         Yes         T49,T62,T66    Yes         T49,T62,T66 INPUT     
+alert_rx_i[0].ping_n        Unreachable Unreachable                Unreachable             INPUT     
+alert_rx_i[0].ping_p        Unreachable Unreachable                Unreachable             INPUT     
+alert_tx_o[0].alert_n       Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 OUTPUT    
+alert_tx_o[0].alert_p       Yes         Yes         T49,T62,T66    Yes         T49,T62,T66 OUTPUT    
+cio_gpio_i[31:0]            Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 INPUT     
+cio_gpio_o[31:0]            Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 OUTPUT    
+cio_gpio_en_o[31:0]         Yes         Yes         T41,T42,T43    Yes         T41,T42,T43 OUTPUT    
+
+*Tests covering at least one bit in the range
+
+-------------------------------------------------------------------------------
